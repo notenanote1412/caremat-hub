@@ -94,7 +94,6 @@ class BookingController extends Controller
         return view('form_input', compact("title"),$request->all());
     }
 
-
     public function info_input(Request $request){
 
         $title = "เชียงใหม่";
@@ -162,20 +161,12 @@ class BookingController extends Controller
 
     public function clinic_config(){
 
-        $this->middleware('auth');
+        // $this->middleware('auth');
 
-        $list_booking = Clinic::all();
-
-        $booking = Booking::all();
-
-            foreach ($list_booking as $key => $booking)
-            {
-                $list_booking[$key]->services = implode(", ", json_decode($booking->services));
-            }
+        
 
 
-
-        return view('list_booking_admin',compact("list_booking"));
+        return view('clinic_config');
     }
     /**
      * Show the form for creating a new resource.

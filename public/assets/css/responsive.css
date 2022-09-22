@@ -99,7 +99,7 @@
     padding-bottom: 70px;
   }
   
-  form {
+  .form-contact {
     border-top: 5px solid #ce1819;
     width: 75%;
     margin: 0px ;
@@ -117,11 +117,11 @@
     border-top: 0px solid #e5e5e5;
   }
   
-  form div {
+  .form-contact div {
     padding: 0 0 1rem 0;
   }
   
-  form label {
+  .form-contact label {
     float: left;
     color: #2f363a;
     width: 100px;
@@ -129,8 +129,8 @@
     line-height: 40px;
   }
   
-  form input,
-  form select {
+  .form-contact input,
+  .form-contact select {
     margin: 0;
     vertical-align: middle;
     color: #ce1819;
@@ -143,18 +143,18 @@
     border-radius: 5px;
   }
   
-  form input:hover,
-  form select:hover {
+  .form-contact input:hover,
+  .form-contact select:hover {
     border: 1px solid #ce1819;
   }
   
-  form input:focus,
-  form select:focus{
+  .form-contact input:focus,
+  .form-contact select:focus{
     border-color: #d1d1d1;
     outline: none;
   }
   
-  form select {
+  .form-contact select {
     float: left;
     border-radius: 0;
     appearance: none;
@@ -163,7 +163,7 @@
   }
   
   
-  form input.submit {
+  .form-contact input.submit {
     float: left;
     color: #fff;
     background: #ce1819;
@@ -174,24 +174,24 @@
     border:none;
   }
   
-  form input.submit:hover {
+  .form-contact input.submit:hover {
     background: #8E030B;
   }
   
-  form p {
+  .form-contact p {
     font-size: 0.85em;
     line-height: 1.6em;
   }
   
-  form p a:link {
+  .form-contact p a:link {
     color: #CE1819;
   }
   
-  form p a:hover {
+  .form-contact p a:hover {
     color: #911218;
   }
   
-  form p a:visited {
+  .form-contact p a:visited {
     color: #2F363A;
   }
   
@@ -307,7 +307,7 @@
     padding-bottom: 70px;
   }
   
-  form {
+  .form-contact {
     border-top: 5px solid #ce1819;
     width: 100%;
     margin: 0px ;
@@ -325,11 +325,11 @@
     border-top: 0px solid #e5e5e5;
   }
   
-  form div {
+  .form-contact div {
     padding: 0 0 1rem 0;
   }
   
-  form label {
+  .form-contact label {
     float: left;
     color: #2f363a;
     width: 100px;
@@ -337,8 +337,8 @@
     line-height: 40px;
   }
   
-  form input,
-  form select {
+  .form-contact input,
+  .form-contact select {
     margin: 0;
     vertical-align: middle;
     color: #ce1819;
@@ -351,18 +351,18 @@
     border-radius: 5px;
   }
   
-  form input:hover,
-  form select:hover {
+  .form-contact input:hover,
+  .form-contact select:hover {
     border: 1px solid #ce1819;
   }
   
-  form input:focus,
-  form select:focus{
+  .form-contact input:focus,
+  .form-contact select:focus{
     border-color: #d1d1d1;
     outline: none;
   }
   
-  form select {
+  .form-contact select {
     float: left;
     border-radius: 0;
     appearance: none;
@@ -371,7 +371,7 @@
   }
   
   
-  form input.submit {
+  .form-contact input.submit {
     float: left;
     color: #fff;
     background: #ce1819;
@@ -382,24 +382,24 @@
     border:none;
   }
   
-  form input.submit:hover {
+  .form-contact input.submit:hover {
     background: #8E030B;
   }
   
-  form p {
+  .form-contact p {
     font-size: 0.85em;
     line-height: 1.6em;
   }
   
-  form p a:link {
+  .form-contact p a:link {
     color: #CE1819;
   }
   
-  form p a:hover {
+  .form-contact p a:hover {
     color: #911218;
   }
   
-  form p a:visited {
+  .form-contact p a:visited {
     color: #2F363A;
   }
   
@@ -497,7 +497,7 @@
   padding-bottom: 70px;
 }
 
-form {
+.form-contact {
   border-top: 5px solid #ce1819;
   width: 100%;
   margin: 0px auto;
@@ -515,11 +515,11 @@ fieldset {
   padding: 40px;
 }
 
-form div {
+.form-contact div {
   padding: 0 0 30px 0;
 }
 
-form label {
+.form-contact label {
   float: left;
   color: #2f363a;
   width: 100px;
@@ -527,8 +527,8 @@ form label {
   line-height: 40px;
 }
 
-form input,
-form select {
+.form-contact input,
+.form-contact select {
   margin: 0;
   vertical-align: middle;
   color: #ce1819;
@@ -541,20 +541,20 @@ form select {
   border-radius: 5px;
 }
 
-form input:hover,
-form select:hover,
-form textarea:hover {
+.form-contact input:hover,
+.form-contact select:hover,
+.form-contact textarea:hover {
   border: 1px solid #ce1819;
 }
 
-form input:focus,
-form select:focus,
-form textarea:focus {
+.form-contact input:focus,
+.form-contact select:focus,
+.form-contact textarea:focus {
   border-color: #d1d1d1;
   outline: none;
 }
 
-form select {
+.form-contact select {
   float: left;
   border-radius: 0;
   appearance: none;
@@ -563,7 +563,7 @@ form select {
 }
 
 
-form input.submit {
+.form-contact input.submit {
   float: left;
   color: #fff;
   background: #ce1819;
@@ -574,24 +574,24 @@ form input.submit {
   border:none;
 }
 
-form input.submit:hover {
+.form-contact input.submit:hover {
   background: #8E030B;
 }
 
-form p {
+.form-contact p {
   font-size: 0.85em;
   line-height: 1.6em;
 }
 
-form p a:link {
+.form-contact p a:link {
   color: #CE1819;
 }
 
-form p a:hover {
+.form-contact p a:hover {
   color: #911218;
 }
 
-form p a:visited {
+.form-contact p a:visited {
   color: #2F363A;
 }
 
@@ -686,7 +686,7 @@ input[type="email"]:invalid ~ .form-input-validation::after {
   padding-bottom: 70px;
 }
 
-form {
+.form-contact {
   border-top: 5px solid #0d6efd;
   width: 100%;
   margin: 0px auto;
@@ -704,11 +704,11 @@ fieldset {
   padding: 40px;
 }
 
-form div {
+.form-contact div {
   padding: 0 0 30px 0;
 }
 
-form label {
+.form-contact label {
   float: left;
   color: #2f363a;
   width: 100px;
@@ -716,8 +716,8 @@ form label {
   line-height: 40px;
 }
 
-form input,
-form select {
+.form-contact input,
+.form-contact select {
   margin: 0;
   vertical-align: middle;
   color: #ce1819;
@@ -730,20 +730,20 @@ form select {
   border-radius: 5px;
 }
 
-form input:hover,
-form select:hover,
-form textarea:hover {
+.form-contact input:hover,
+.form-contact select:hover,
+.form-contact textarea:hover {
   border: 1px solid #ce1819;
 }
 
-form input:focus,
-form select:focus,
-form textarea:focus {
+.form-contact input:focus,
+.form-contact select:focus,
+.form-contact textarea:focus {
   border-color: #d1d1d1;
   outline: none;
 }
 
-form select {
+.form-contact select {
   float: left;
   border-radius: 0;
   appearance: none;
@@ -752,7 +752,7 @@ form select {
 }
 
 
-form input.submit {
+.form-contact input.submit {
   float: left;
   color: #fff;
   background: #0d6efd;
@@ -762,25 +762,24 @@ form input.submit {
   height: 50px;
   border:none;
 }
-
-form input.submit:hover {
+.form-contact input.submit:hover {
   background: #198754;
 }
 
-form p {
+.form-contact p {
   font-size: 0.85em;
   line-height: 1.6em;
 }
 
-form p a:link {
+.form-contact p a:link {
   color: #CE1819;
 }
 
-form p a:hover {
+.form-contact p a:hover {
   color: #911218;
 }
 
-form p a:visited {
+.form-contact p a:visited {
   color: #2F363A;
 }
 

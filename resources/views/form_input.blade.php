@@ -9,7 +9,7 @@
                 <h5 class="title_contact">ข้อมูลสำหรับติดนัดหมาย</h5>
             </div>
             <div id="contact_form">
-                <form @submit.prevent="time_submit()">
+                <form class = "form-contact" @submit.prevent="time_submit()">
                     @csrf
                     <fieldset>
 

@@ -30,9 +30,6 @@
                 <div class="img-fluid">
                     <img src="assets/images/model_1.png">
                 </div>
-                <div class="img-fluid">
-                    <img src="assets/images/model_2.png">
-                </div>
             </div>
         </div>
     </div>
