@@ -143,8 +143,28 @@ class BookingController extends Controller
 
     public function adminpage(Request $request){
 
+        $this->middleware('auth');
+
         //$booking = new Booking;
         $list_booking = Booking::all();
+
+        $booking = Booking::all();
+
+            foreach ($list_booking as $key => $booking)
+            {
+                $list_booking[$key]->services = implode(", ", json_decode($booking->services));
+            }
+
+
+
+        return view('list_booking_admin',compact("list_booking"));
+    }
+
+    public function clinic_config(){
+
+        $this->middleware('auth');
+
+        $list_booking = Clinic::all();
 
         $booking = Booking::all();
 
