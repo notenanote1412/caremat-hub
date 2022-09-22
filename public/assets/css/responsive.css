@@ -1,0 +1,847 @@
+/* Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .navbar .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* index page */
+
+  .title {
+    margin-top: 1rem;
+    color: #855fa8;
+    font-size: 36px;
+  }
+
+  .description {
+    margin-top: 1rem;
+    padding: 0 2rem;
+    font-size: 16px;
+    color: #000000;
+  }
+
+  .button-bar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button-bar .btn-2,.btn-3 {
+    margin-top: 1rem;
+  }
+
+  .model-images {
+    margin-top: 1rem;
+  }
+
+  /* services page */
+  .service_title {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .all-cards {
+    padding: 4% 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+    grid-auto-rows: minmax(250px, 300px);
+    grid-row-gap: 2%;
+    grid-column-gap: 5%;
+  }
+
+  .blood-image,
+  .prep-image,
+  .hormones-image,
+  .hep-b-image,
+  .hep-c-image,
+  .consultation-image {
+    width: 8rem;
+  }
+
+  .btn-continue {
+    margin-top: 0.5rem;
+  }
+
+  /* selectdatetime page */
+
+  .selectdatetime h4,h5,h6 {
+    text-align: center;
+  }
+
+  .timeslot {
+    margin-left: 3rem;
+  }
+
+  /* contact page */
+  #container {
+    margin: 0 auto;
+    width: 600px;
+  }
+  
+  #contact_header {
+    text-align: center;
+    width: 410px;
+    height: 90px;
+    margin-top: 2rem;
+  }
+  
+  #contact_header h4 {
+    color: #2F363A;
+  }
+  
+  #contact_header h5 {
+    margin-top: 1rem;
+    color: #2F363A;
+  }
+  
+  #contact_form {
+    position: relative;
+    margin: 0 auto;
+    padding-bottom: 70px;
+  }
+  
+  form {
+    border-top: 5px solid #ce1819;
+    width: 75%;
+    margin: 0px ;
+    color: #2F363A;
+  }
+  
+  
+  fieldset {
+    height: auto;
+    margin: auto;
+    padding: 1rem 0.5rem;
+    background: #fdfdfd;
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    border-top: 0px solid #e5e5e5;
+  }
+  
+  form div {
+    padding: 0 0 1rem 0;
+  }
+  
+  form label {
+    float: left;
+    color: #2f363a;
+    width: 100px;
+    font-size: 1em;
+    line-height: 40px;
+  }
+  
+  form input,
+  form select {
+    margin: 0;
+    vertical-align: middle;
+    color: #ce1819;
+    background: #fdfdfd;
+    border: 1px solid #D1D1D1;
+    font-size: 1em;
+    font-weight: 400;
+    padding: 10px;
+    width: 350px;
+    border-radius: 5px;
+  }
+  
+  form input:hover,
+  form select:hover {
+    border: 1px solid #ce1819;
+  }
+  
+  form input:focus,
+  form select:focus{
+    border-color: #d1d1d1;
+    outline: none;
+  }
+  
+  form select {
+    float: left;
+    border-radius: 0;
+    appearance: none;
+    margin-bottom: 35px;
+    width: 332px;
+  }
+  
+  
+  form input.submit {
+    float: left;
+    color: #fff;
+    background: #ce1819;
+    margin-top: 20px;
+    margin-left: 80px;
+    width: 50%;
+    height: 50px;
+    border:none;
+  }
+  
+  form input.submit:hover {
+    background: #8E030B;
+  }
+  
+  form p {
+    font-size: 0.85em;
+    line-height: 1.6em;
+  }
+  
+  form p a:link {
+    color: #CE1819;
+  }
+  
+  form p a:hover {
+    color: #911218;
+  }
+  
+  form p a:visited {
+    color: #2F363A;
+  }
+  
+  .form-input-required {
+    position: relative;
+    left: -5%;
+    top: 7px;
+    color: #c97272;
+    z-index: 2;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  input:required:invalid ~ .form-input-validation::before {
+    content: '';
+  }
+  
+  input:invalid ~ .form-input-validation::after {
+    text-align: center;
+    position: relative;
+    top: -28px;
+    left: 70%;
+    padding: 10px;
+    background: #CE1819;
+    color: white;
+    font-size: 12px;
+    box-shadow: 2px 2px 2px rgba(200, 200, 200, .5);
+    transform: translateX(100%) translateY(-50%);
+  }
+  
+  input[type="email"]:invalid ~ .form-input-validation::after {
+    content: 'Input format error';
+  }
+  
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  /* index page */
+
+  .title {
+    margin-top: 1rem;
+    color: #855fa8;
+    font-size: 36px;
+  }
+
+  .button-bar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button-bar .btn-2,.btn-3 {
+    margin-top: 2rem;
+  }
+
+  .model-images {
+    margin-top: 2rem;
+  }
+
+  /* services page */
+
+  .all-cards {
+    padding: 4% 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+    grid-auto-rows: minmax(250px, 300px);
+    grid-row-gap: 2%;
+    grid-column-gap: 5%;
+  }
+
+
+  .btn-continue {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* selectdatetime page */
+
+  .selectdatetime h4,h5,h6 {
+    text-align: center;
+  }
+
+  .selectdatetime .timeslot {
+    margin-left: 5rem;
+  }
+
+  /* contact page */
+  #container {
+    margin: 0 auto;
+    width: 500px;
+  }
+  
+  #contact_header {
+    text-align: center;
+    width: 500px;
+    height: 90px;
+    margin-top: 2rem;
+  }
+  
+  #contact_header h4 {
+    color: #2F363A;
+  }
+  
+  #contact_header h5 {
+    margin-top: 1rem;
+    color: #2F363A;
+  }
+  
+  #contact_form {
+    position: relative;
+    margin: 0 auto;
+    margin-left: 0rem;
+    padding-bottom: 70px;
+  }
+  
+  form {
+    border-top: 5px solid #ce1819;
+    width: 100%;
+    margin: 0px ;
+    color: #2F363A;
+  }
+  
+  
+  fieldset {
+    height: auto;
+    margin: auto;
+    padding: 1rem 0.5rem;
+    background: #fdfdfd;
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    border-top: 0px solid #e5e5e5;
+  }
+  
+  form div {
+    padding: 0 0 1rem 0;
+  }
+  
+  form label {
+    float: left;
+    color: #2f363a;
+    width: 100px;
+    font-size: 1em;
+    line-height: 40px;
+  }
+  
+  form input,
+  form select {
+    margin: 0;
+    vertical-align: middle;
+    color: #ce1819;
+    background: #fdfdfd;
+    border: 1px solid #D1D1D1;
+    font-size: 1em;
+    font-weight: 400;
+    padding: 10px;
+    width: 350px;
+    border-radius: 5px;
+  }
+  
+  form input:hover,
+  form select:hover {
+    border: 1px solid #ce1819;
+  }
+  
+  form input:focus,
+  form select:focus{
+    border-color: #d1d1d1;
+    outline: none;
+  }
+  
+  form select {
+    float: left;
+    border-radius: 0;
+    appearance: none;
+    margin-bottom: 35px;
+    width: 332px;
+  }
+  
+  
+  form input.submit {
+    float: left;
+    color: #fff;
+    background: #ce1819;
+    margin-top: 20px;
+    margin-left: 130px;
+    width: 50%;
+    height: 50px;
+    border:none;
+  }
+  
+  form input.submit:hover {
+    background: #8E030B;
+  }
+  
+  form p {
+    font-size: 0.85em;
+    line-height: 1.6em;
+  }
+  
+  form p a:link {
+    color: #CE1819;
+  }
+  
+  form p a:hover {
+    color: #911218;
+  }
+  
+  form p a:visited {
+    color: #2F363A;
+  }
+  
+  .form-input-required {
+    position: relative;
+    left: -5%;
+    top: 7px;
+    color: #c97272;
+    z-index: 2;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  input:required:invalid ~ .form-input-validation::before {
+    content: '';
+  }
+  
+  input:invalid ~ .form-input-validation::after {
+    text-align: center;
+    position: relative;
+    top: -28px;
+    left: 70%;
+    padding: 10px;
+    background: #CE1819;
+    color: white;
+    font-size: 12px;
+    box-shadow: 2px 2px 2px rgba(200, 200, 200, .5);
+    transform: translateX(100%) translateY(-50%);
+  }
+  
+  input[type="email"]:invalid ~ .form-input-validation::after {
+    content: 'Input format error';
+  }
+  
+
+}
+
+
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  /* index page */
+
+  .title {
+    margin-top: 4rem;
+    color: #855fa8;
+    font-size: 36px;
+  }
+
+
+  /* services page */
+
+  .all-cards {
+    padding: 4% 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+    grid-auto-rows: minmax(250px, 300px);
+    grid-row-gap: 5%;
+    grid-column-gap: 5%;
+  }
+
+  .btn-continue {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /*contact Page*/
+
+#container {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+#contact_header {
+  text-align: center;
+  width: 850px;
+  height: 90px;
+  margin-top: 2rem;
+}
+
+#contact_header h4 {
+  color: #2F363A;
+}
+
+#contact_header h5 {
+  margin-top: 1rem;
+  color: #2F363A;
+}
+
+#contact_form {
+  position: relative;
+  margin: 0 auto;
+  padding-bottom: 70px;
+}
+
+form {
+  border-top: 5px solid #ce1819;
+  width: 100%;
+  margin: 0px auto;
+  color: #2F363A;
+}
+
+
+fieldset {
+  height: auto;
+  margin: auto;
+  background: #fdfdfd;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-top: 0px solid #e5e5e5;
+  padding: 40px;
+}
+
+form div {
+  padding: 0 0 30px 0;
+}
+
+form label {
+  float: left;
+  color: #2f363a;
+  width: 100px;
+  font-size: 1em;
+  line-height: 40px;
+}
+
+form input,
+form select {
+  margin: 0;
+  vertical-align: middle;
+  color: #ce1819;
+  background: #fdfdfd;
+  border: 1px solid #D1D1D1;
+  font-size: 1em;
+  font-weight: 400;
+  padding: 10px;
+  width: 650px;
+  border-radius: 5px;
+}
+
+form input:hover,
+form select:hover,
+form textarea:hover {
+  border: 1px solid #ce1819;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #d1d1d1;
+  outline: none;
+}
+
+form select {
+  float: left;
+  border-radius: 0;
+  appearance: none;
+  margin-bottom: 35px;
+  width: 332px;
+}
+
+
+form input.submit {
+  float: left;
+  color: #fff;
+  background: #ce1819;
+  margin-top: 20px;
+  margin-left: 10rem;
+  width: 50%;
+  height: 50px;
+  border:none;
+}
+
+form input.submit:hover {
+  background: #8E030B;
+}
+
+form p {
+  font-size: 0.85em;
+  line-height: 1.6em;
+}
+
+form p a:link {
+  color: #CE1819;
+}
+
+form p a:hover {
+  color: #911218;
+}
+
+form p a:visited {
+  color: #2F363A;
+}
+
+.form-input-required {
+  position: relative;
+  left: -5%;
+  top: 7px;
+  color: #c97272;
+  z-index: 2;
+  text-align: center;
+  font-size: 20px;
+}
+
+input:required:invalid ~ .form-input-validation::before {
+  content: '';
+}
+
+input:invalid ~ .form-input-validation::after {
+  text-align: center;
+  position: relative;
+  top: -28px;
+  left: 70%;
+  padding: 10px;
+  background: #CE1819;
+  color: white;
+  font-size: 12px;
+  box-shadow: 2px 2px 2px rgba(200, 200, 200, .5);
+  transform: translateX(100%) translateY(-50%);
+}
+
+input[type="email"]:invalid ~ .form-input-validation::after {
+  content: 'Input format error';
+}
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* index page */
+  .title {
+    margin-top: 10rem;
+    color: #855fa8;
+    font-size: 36px;
+  }
+  .button-bar {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .button-bar .btn-2,.btn-3 {
+    margin-left: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* services page */
+
+  .all-cards {
+    padding: 4% 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    grid-auto-rows: minmax(250px, 300px);
+    grid-row-gap: 5%;
+    grid-column-gap: 5%;
+  }
+
+    /*contact Page*/
+
+#container {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+#contact_header {
+  text-align: center;
+  width: 1000px;
+  height: 90px;
+  margin-top: 2rem;
+}
+
+#contact_header h4 {
+  color: #2F363A;
+}
+
+#contact_header h5 {
+  margin-top: 1rem;
+  color: #2F363A;
+}
+
+#contact_form {
+  position: relative;
+  margin: 0 auto;
+  padding-bottom: 70px;
+}
+
+form {
+  border-top: 5px solid #0d6efd;
+  width: 100%;
+  margin: 0px auto;
+  color: #2F363A;
+}
+
+
+fieldset {
+  height: auto;
+  margin: auto;
+  background: #fdfdfd;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-top: 0px solid #e5e5e5;
+  padding: 40px;
+}
+
+form div {
+  padding: 0 0 30px 0;
+}
+
+form label {
+  float: left;
+  color: #2f363a;
+  width: 100px;
+  font-size: 1em;
+  line-height: 40px;
+}
+
+form input,
+form select {
+  margin: 0;
+  vertical-align: middle;
+  color: #ce1819;
+  background: #fdfdfd;
+  border: 1px solid #D1D1D1;
+  font-size: 1em;
+  font-weight: 400;
+  padding: 10px;
+  width: 800px;
+  border-radius: 5px;
+}
+
+form input:hover,
+form select:hover,
+form textarea:hover {
+  border: 1px solid #ce1819;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #d1d1d1;
+  outline: none;
+}
+
+form select {
+  float: left;
+  border-radius: 0;
+  appearance: none;
+  margin-bottom: 35px;
+  width: 332px;
+}
+
+
+form input.submit {
+  float: left;
+  color: #fff;
+  background: #0d6efd;
+  margin-top: 20px;
+  margin-left: 15rem;
+  width: 50%;
+  height: 50px;
+  border:none;
+}
+
+form input.submit:hover {
+  background: #198754;
+}
+
+form p {
+  font-size: 0.85em;
+  line-height: 1.6em;
+}
+
+form p a:link {
+  color: #CE1819;
+}
+
+form p a:hover {
+  color: #911218;
+}
+
+form p a:visited {
+  color: #2F363A;
+}
+
+.form-input-required {
+  position: relative;
+  left: -5%;
+  top: 7px;
+  color: #c97272;
+  z-index: 2;
+  text-align: center;
+  font-size: 20px;
+}
+
+input:required:invalid ~ .form-input-validation::before {
+  content: '';
+}
+
+input:invalid ~ .form-input-validation::after {
+  text-align: center;
+  position: relative;
+  top: -28px;
+  left: 70%;
+  padding: 10px;
+  background: #CE1819;
+  color: white;
+  font-size: 12px;
+  box-shadow: 2px 2px 2px rgba(200, 200, 200, .5);
+  transform: translateX(100%) translateY(-50%);
+}
+
+input[type="email"]:invalid ~ .form-input-validation::after {
+  content: 'Input format error';
+}
+
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* index page */
+
+  .title {
+    margin-top: 4rem;
+    color: #855fa8;
+    font-size: 36px;
+  }
+
+  .button-bar .btn-2,.btn-3 {
+    margin-left: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  /* index page */
+  .title {
+    margin-top: 10rem;
+    color: #855fa8;
+    font-size: 36px;
+  }
+
+ 
+}
