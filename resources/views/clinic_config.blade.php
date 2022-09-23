@@ -7,33 +7,32 @@
 
     </title>
 
-    <link rel="icon" type="image/png" sizes="32x32" href="../../assets_clinic_config/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets_clinic_config/images/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="">
 
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-    <script src="../../"></script>
     <!-- global js -->
-    <script src="../../assets_clinic_config/js/jquery.min.js" type="text/javascript"></script>
-    <script src="../../assets_clinic_config/js/app.js" type="text/javascript"></script>
-    <script src="../../assets_clinic_config/js/utils.js" type="text/javascript"></script>
-    <script src="../../assets_clinic_config/js/eModal.min.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/jquery.min.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/app.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/utils.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/eModal.min.js" type="text/javascript"></script>
 
-    <script src="../../assets_clinic_config/js/jquery.scrolling-tabs.min.js"></script>
+    <script src="./assets_clinic_config/js/jquery.scrolling-tabs.min.js"></script>
 
-    <script src="../../assets_clinic_config/js/moment.min.js" type="text/javascript"></script>
-    <script src="../../assets_clinic_config/js/daterangepicker.js" type="text/javascript"></script>
-    <script src="../../assets_clinic_config/js/bootstrap-editable.min.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/moment.min.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/daterangepicker.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/bootstrap-editable.min.js" type="text/javascript"></script>
     <!-- end of global js -->
 
     <!-- global css -->
-    <link href="../../assets_clinic_config/css/app.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets_clinic_config/css/site.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets_clinic_config/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets_clinic_config/css/toastr.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="../../assets_clinic_config/css/font-awesome.min.css">
-    <link href="../../assets_clinic_config/css/daterangepicker.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="../../assets_clinic_config/css/bootstrap-editable.css" />
+    <link href="./assets_clinic_config/css/app.css" rel="stylesheet" type="text/css" />
+    <link href="./assets_clinic_config/css/site.css" rel="stylesheet" type="text/css" />
+    <link href="./assets_clinic_config/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="./assets_clinic_config/css/toastr.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./assets_clinic_config/css/font-awesome.min.css">
+    <link href="./assets_clinic_config/css/daterangepicker.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./assets_clinic_config/css/bootstrap-editable.css" />
 
     <!-- end of global css -->
 
@@ -89,16 +88,16 @@
     </style>
 
     <!--page level css-->
-    <link href="../../assets_clinic_config/css/select2.min.css" type="text/css" rel="stylesheet">
-    <link href="../../assets_clinic_config/css/select2-bootstrap.css" rel="stylesheet">
-    <link href="../../assets_clinic_config/css/jasny-bootstrap.css" rel="stylesheet">
-    <link type="text/css" href="../../assets_clinic_config/css/bootstrap-multiselect.css" rel="stylesheet" />
-    <link href="../../assets_clinic_config/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
-    <link href="../../assets_clinic_config/css/jsgrid.min.css" rel="stylesheet">
-    <link href="../../assets_clinic_config/css/jsgrid-theme.min.css" rel="stylesheet">
+    <link href="./assets_clinic_config/css/select2.min.css" type="text/css" rel="stylesheet">
+    <link href="./assets_clinic_config/css/select2-bootstrap.css" rel="stylesheet">
+    <link href="./assets_clinic_config/css/jasny-bootstrap.css" rel="stylesheet">
+    <link type="text/css" href="./assets_clinic_config/css/bootstrap-multiselect.css" rel="stylesheet" />
+    <link href="./assets_clinic_config/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
+    <link href="./assets_clinic_config/css/jsgrid.min.css" rel="stylesheet">
+    <link href="./assets_clinic_config/css/jsgrid-theme.min.css" rel="stylesheet">
   <!--end of page level css-->
 </head>
-  
+
 @extends('layouts.paperlayouts')
 @section('content')
             <!-- Content -->
@@ -944,22 +943,22 @@
     <!-- Loading panel -->
     <div class="loading-panel" style="display: none;">
         <div>
-            <img src="../../assets_clinic_config/images/loading.gif" width="70" height="70" />
+            <img src="./assets_clinic_config/images/loading.gif" width="70" height="70" />
             <h3>Loading...</h3>
         </div>
     </div>
 @endsection
 
-    <script src="../../assets_clinic_config/js/toastr.min.js"></script>
-    <script src="../../assets_clinic_config/js/scSlider.min.js"></script>
+    <script src="./assets_clinic_config/js/toastr.min.js"></script>
+    <script src="./assets_clinic_config/js/scSlider.min.js"></script>
 
     <!-- begin page level js -->
-    <script src="../../assets_clinic_config/js/moment.min.js"></script>
-    <script src="../../assets_clinic_config/js/jasny-bootstrap.js" type="text/javascript"></script>
-    <script src="../../assets_clinic_config/js/select2.js" type="text/javascript"></script>
-    <script src="../../assets_clinic_config/js/bootstrapValidator.min.js" type="text/javascript"></script>
-    <script src="../../assets_clinic_config/js/tinymce.min.js" type="text/javascript"></script>
-    <script src="../../assets_clinic_config/js/bootstrap-colorpicker.min.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/moment.min.js"></script>
+    <script src="./assets_clinic_config/js/jasny-bootstrap.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/select2.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/bootstrapValidator.min.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/tinymce.min.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/bootstrap-colorpicker.min.js" type="text/javascript"></script>
 
-    <script src="../../assets_clinic_config/js/clinics.js" type="text/javascript"></script>
-    <script src="../../assets_clinic_config/js/jsgrid.min.js" type="text/javascript"></script><!-- end page level js -->
+    <script src="./assets_clinic_config/js/clinics.js" type="text/javascript"></script>
+    <script src="./assets_clinic_config/js/jsgrid.min.js" type="text/javascript"></script><!-- end page level js -->

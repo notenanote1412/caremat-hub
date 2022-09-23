@@ -156,14 +156,14 @@ class BookingController extends Controller
 
 
 
-        return view('list_booking_admin',compact("list_booking"));
+        return view('admin_list_booking',compact("list_booking"));
     }
 
     public function clinic_config(){
 
         // $this->middleware('auth');
 
-        
+
 
 
         return view('clinic_config');
