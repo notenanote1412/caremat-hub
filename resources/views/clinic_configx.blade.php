@@ -298,11 +298,15 @@
 
     $("#workings").jsGrid({
         width: "100%",
-        height: "400px",
+        height: "auto",
 
+        filtering: false,
+        paging: false,
+        sorting: false,
+        autoload: true,
+        inserting: false,
+        deleting: false,
         editing: true,
-        sorting: true,
-        paging: true,
 
         data: workings,
 
@@ -332,47 +336,66 @@
                 width: 100
             },
             {
-                type: "control"
+                type: "control",
+                editButton: false,
+                deleteButton: false,
+                clearFilterButton: false,
+                modeSwitchButton: false,
+                width: "70px",
+                deleteButtonTooltip: "Delete",
+                updateButtonTooltip: "Update",
+                cancelEditButtonTooltip: "Cancel edit",
+                insertButtonTooltip: "Insert",
             }
         ]
     });
 
     var holidays = [{
-            "ชื่อวันหยุดนักขัตฤกษ์": "",
+            "รายการวันหยุด": "วันขึ้นปีใหม่",
+            "วันที่": "01/01/2022"
         },
         {
-            "Holiday Name": "",
+            "รายการวันหยุด": "วันสงกรานต์",
+            "วันที่": "13/04/2022"
         },
         {
-            "Holiday Name": "",
+            "รายการวันหยุด": "วันฉัตรมงคล",
+            "วันที่": "05/05/2022"
         },
         {
-            "Holiday Name": "",
+            "รายการวันหยุด": "วันแม่แห่งชาติ",
+            "วันที่": "12/08/2022"
         },
         {
-            "Holiday Name": "",
+            "รายการวันหยุด": "วันพ่อแห่งชาติ",
+            "วันที่": "05/12/2022"
         },
         {
-            "Holiday Name": "",
+            "รายการวันหยุด": "วันรัฐธรรมนูญ",
+            "วันที่": "10/12/2022"
         },
         {
-            "Holiday Name": "",
+            "รายการวันหยุด": "วันปิยมหาราช",
+            "วันที่": "23/12/2022"
         }
     ];
 
     $("#holidays").jsGrid({
         width: "100%",
-        height: "400px",
+        height: "auto",
 
+        filtering: false,
+        paging: false,
+        sorting: false,
+        autoload: true,
+        confirmDeleting: false,
         inserting: true,
         editing: true,
-        sorting: true,
-        paging: true,
 
         data: holidays,
 
         fields: [{
-                name: "ชื่อวันหยุดนักขัตฤกษ์",
+                name: "รายการวันหยุด",
                 type: "text",
                 width: 150,
             },
@@ -382,12 +405,22 @@
                 width: 100
             },
             {
-                name: "Recurring",
-                type: "text",
-                width: 100
+                name: "is_recurring",
+                title: "Recurring",
+                type: "checkbox",
+                width: "20%"
             },
             {
-                type: "control"
+                type: "control",
+                editButton: false,
+                deleteButton: true,
+                clearFilterButton: false,
+                modeSwitchButton: false,
+                width: "70px",
+                deleteButtonTooltip: "Delete",
+                updateButtonTooltip: "Update",
+                cancelEditButtonTooltip: "Cancel edit",
+                insertButtonTooltip: "Insert",
             }
         ]
     });
