@@ -415,12 +415,8 @@
                 editButton: false,
                 deleteButton: true,
                 clearFilterButton: false,
-                modeSwitchButton: false,
-                width: "70px",
-                deleteButtonTooltip: "Delete",
-                updateButtonTooltip: "Update",
-                cancelEditButtonTooltip: "Cancel edit",
-                insertButtonTooltip: "Insert",
+
+
             }
         ]
     });
