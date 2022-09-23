@@ -19,7 +19,7 @@
                                     </div>
                                     <label>คำอธิบายคลินิก</label>
                                     <div class="form-group">
-                                        <textarea type="text" class="form-control" >ลดเวลาในคลินิกจองให้ปรึกษาออนไลน์กับแคร์แมท</textarea>
+                                        <textarea type="text" class="form-control">ลดเวลาในคลินิกจองให้ปรึกษาออนไลน์กับแคร์แมท</textarea>
                                     </div>
                                     <label>โลโก้คลินิก</label>
                                     <div class="form-group">
@@ -63,6 +63,14 @@
                                             <option>120</option>
                                         </select>
                                     </div>
+
+                                    <div class="form-group d-flex justify-content-center align-items-center">
+                                        <div class="col-md-offset-3 col-md-10">
+                                            <input class="btn btn-success" style="width: 135px; margin-top: 1rem;" type="submit" value="Save">
+                                            <a href="" class="btn btn-default" style="width: 135px; margin-top: 1rem; margin-left: 10px">Cancel</a>
+                                        </div>
+                                    </div>
+
                                     {{-- - clinic_name ชื่อคลินิก -> text
                                     - clinic_description คำอธิบายคลินิก -> text
                                     - clinic_phone เบอร์โทรคลินิก -> text

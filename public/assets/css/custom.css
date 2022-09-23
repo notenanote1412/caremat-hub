@@ -582,7 +582,7 @@ fieldset {
 .form-contact select {
   margin: 0;
   vertical-align: middle;
-  color: #ce1819;
+  color: #000000;
   background: #fdfdfd;
   border: 1px solid #D1D1D1;
   font-size: 1em;
@@ -594,7 +594,7 @@ fieldset {
 
 .form-contact input:hover,
 .form-contact select:hover{
-  border: 1px solid #ce1819;
+  border: 1px solid #000000;
 }
 
 .form-contact input:focus,

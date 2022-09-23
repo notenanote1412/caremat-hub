@@ -6,7 +6,7 @@
         <div id="container">
             <div id="contact_header">
                 <h4 class="step_3">ขั้นตอนที่ 3</h4>
-                <h5 class="title_contact">ข้อมูลสำหรับติดนัดหมาย</h5>
+                <h5 class="title_contact">ข้อมูลสำหรับนัดหมาย</h5>
             </div>
             <div id="contact_form">
                 <form class = "form-contact" @submit.prevent="time_submit()">
@@ -26,7 +26,7 @@
                         </div>
 
                         <div>
-                            <label for="email">อีเมล์:<span class="text-danger">*</span></label>
+                            <label for="email">อีเมล์:</label>
                             <input type="email"  id="email" name="email" v-model="email"/>
                             <span class="form-input-required">&nbsp</span>
                             <span class="form-input-validation"></span>
