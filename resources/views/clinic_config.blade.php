@@ -249,7 +249,7 @@
                                             </script>
                                         </div>
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="panel panel-info">
                                                 <div class="panel-heading">
                                                     <h3 class="panel-title">

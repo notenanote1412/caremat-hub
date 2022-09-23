@@ -15,17 +15,17 @@
                                 <div class="card-body">
                                     <label>ชื่อคลินิก</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" value="ศูนย์สุขภาพแคร์แมท เชียงใหม่">
                                     </div>
                                     <label>คำอธิบายคลินิก</label>
                                     <div class="form-group">
-                                        <textarea type="text" class="form-control"></textarea>
+                                        <textarea type="text" class="form-control" >ลดเวลาในคลินิกจองให้ปรึกษาออนไลน์กับแคร์แมท</textarea>
                                     </div>
                                     <label>โลโก้คลินิก</label>
                                     <div class="form-group">
                                         <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                             <div class="fileinput-new thumbnail">
-                                                <img src="./assets1/img/image_placeholder.jpg" alt="...">
+                                                <img src="../../assets_clinic_config/images/logo.png" alt="logo">
                                             </div>
                                             <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                             <div>
@@ -40,15 +40,15 @@
                                     </div>
                                     <label>เบอร์โทรคลินิก</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" value="052-005458, 094-6297666, 061-6812164">
                                     </div>
                                     <label>ที่อยู่คลินิก</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" value="คลินิกเทคนิคการแพทย์แคร์แมท เชียงใหม่,  257/102-103 หมู่บ้านดาวดึงส์ ซอย 2 ถ.สุเทพ ต.สุเทพ จ.เชียงใหม่ 50200">
                                     </div>
                                     <label>แผนที่คลินิก (Google Map)</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" value="http://bit.ly/2HtH4Xf">
                                     </div>
                                     <hr>
                                     <label>Slot การจอง</label>
@@ -313,6 +313,7 @@
         fields: [{
                 name: "วัน",
                 type: "text",
+                readOnly: true,
                 width: 150,
             },
             {
