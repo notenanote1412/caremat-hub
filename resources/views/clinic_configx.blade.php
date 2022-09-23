@@ -191,6 +191,7 @@
 @section('script')
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
 
+
 <script>
     alert(123)
     var clients = [{
