@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
                                     <label>ชื่อคลินิก</label>
@@ -34,8 +34,7 @@
                                                     <span class="fileinput-exists">Change</span>
                                                     <input type="file" name="..." />
                                                 </span>
-                                                <a href="javascript:;" class="btn btn-danger btn-round fileinput-exists"
-                                                    data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                                <a href="javascript:;" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                                             </div>
                                         </div>
                                     </div>
@@ -88,12 +87,12 @@
                             </div>
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <div id="jsGrid"></div>
+                                    <div id="workings"></div>
                                     {{-- <div class="table-responsive">
-                                        <table class="table" id="jsGrid">
+                                        <table class="table" id="workings">
                                             <thead class="text-primary">
                                                 <th class="text-center">วัน</th>
                                                 <th>start1</th>
@@ -102,6 +101,13 @@
                                                 <th>end2</th>
                                             </thead>
                                             <tbody>
+                                                <tr>
+                                                    <td class="text-center">อาทิตย์</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                </tr>
                                                 <tr>
                                                     <td class="text-center">จันทร์</td>
                                                     <td>00:00</td>
@@ -124,28 +130,21 @@
                                                     <td>00:00</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="text-center">จันทร์</td>
+                                                    <td class="text-center">พฤหัสบดี</td>
                                                     <td>00:00</td>
                                                     <td>00:00</td>
                                                     <td>00:00</td>
                                                     <td>00:00</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="text-center">จันทร์</td>
+                                                    <td class="text-center">ศุกร์</td>
                                                     <td>00:00</td>
                                                     <td>00:00</td>
                                                     <td>00:00</td>
                                                     <td>00:00</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="text-center">จันทร์</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">จันทร์</td>
+                                                    <td class="text-center">เสาร์</td>
                                                     <td>00:00</td>
                                                     <td>00:00</td>
                                                     <td>00:00</td>
@@ -156,20 +155,72 @@
                                     </div> --}}
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
+
                             <div class="card">
                                 <div class="card-body">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis cupiditate optio
-                                    similique, obcaecati, repellat ab veritatis, sapiente alias eaque at distinctio
-                                    doloremque odit quidem vero excepturi eos aperiam mollitia enim inventore beatae
-                                    accusamus magnam dolorem amet earum! Optio unde fugiat veniam atque magni commodi
-                                    porro nam aliquid ad? Porro minus incidunt inventore libero eos, commodi suscipit
-                                    distinctio atque unde maiores nam, ullam deserunt soluta provident iusto quis
-                                    officiis tempora non dignissimos dolorem! Reprehenderit omnis rerum non ullam
-                                    facilis, fugit quia repudiandae, doloribus dolores autem ratione impedit. Ratione
-                                    quam fuga soluta necessitatibus quibusdam nostrum quis dicta! Labore odio
-                                    necessitatibus error maiores?
+                                    <div id="holidays"></div>
+                                    {{-- <div class="table-responsive">
+                                        <table class="table" id="holidays">
+                                            <thead class="text-primary">
+                                                <th class="text-center">วัน</th>
+                                                <th>start1</th>
+                                                <th>end1</th>
+                                                <th>start2</th>
+                                                <th>end2</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">อาทิตย์</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">จันทร์</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">อังคาร</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">พุธ</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">พฤหัสบดี</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">ศุกร์</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">เสาร์</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                    <td>00:00</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -184,71 +235,131 @@
 
 @section('style')
 <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
-<link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
 @endsection
 
 @section('script')
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
 
 <script>
-    alert(123)
-    var clients = [{
-            "Name": "Otto Clay",
-            "Age": 25,
-            "Country": 1,
-            "Address": "Ap #897-1459 Quam Avenue",
-            "Married": false
+    var workings = [{
+            "วัน": "อาทิตย์",
+            "Start 1": "00:00",
+            "End 1": "00:00",
+            "Start 2": "00:00",
+            "End 2": "00:00",
+
         },
         {
-            "Name": "Connor Johnston",
-            "Age": 45,
-            "Country": 2,
-            "Address": "Ap #370-4647 Dis Av.",
-            "Married": true
+            "วัน": "จันทร์",
+            "Start 1": "00:00",
+            "End 1": "00:00",
+            "Start 2": "00:00",
+            "End 2": "00:00",
         },
         {
-            "Name": "Lacey Hess",
-            "Age": 29,
-            "Country": 3,
-            "Address": "Ap #365-8835 Integer St.",
-            "Married": false
+            "วัน": "อังคาร",
+            "Start 1": "00:00",
+            "End 1": "00:00",
+            "Start 2": "00:00",
+            "End 2": "00:00",
         },
         {
-            "Name": "Timothy Henson",
-            "Age": 56,
-            "Country": 1,
-            "Address": "911-5143 Luctus Ave",
-            "Married": true
+            "วัน": "พุธ",
+            "Start 1": "00:00",
+            "End 1": "00:00",
+            "Start 2": "00:00",
+            "End 2": "00:00",
         },
         {
-            "Name": "Ramona Benton",
-            "Age": 32,
-            "Country": 3,
-            "Address": "Ap #614-689 Vehicula Street",
-            "Married": false
+            "วัน": "พฤหัสบดี",
+            "Start 1": "00:00",
+            "End 1": "00:00",
+            "Start 2": "00:00",
+            "End 2": "00:00",
+        },
+        {
+            "วัน": "ศุกร์",
+            "Start 1": "00:00",
+            "End 1": "00:00",
+            "Start 2": "00:00",
+            "End 2": "00:00",
+        },
+        {
+            "วัน": "เสาร์",
+            "Start 1": "00:00",
+            "End 1": "00:00",
+            "Start 2": "00:00",
+            "End 2": "00:00",
         }
     ];
 
-    var countries = [{
-            Name: "",
-            Id: 0
+
+    $("#workings").jsGrid({
+        width: "100%",
+        height: "400px",
+
+        editing: true,
+        sorting: true,
+        paging: true,
+
+        data: workings,
+
+        fields: [{
+                name: "วัน",
+                type: "text",
+                width: 150,
+            },
+            {
+                name: "Start 1",
+                type: "text",
+                width: 100
+            },
+            {
+                name: "End 1",
+                type: "text",
+                width: 100
+            },
+            {
+                name: "Start 2",
+                type: "text",
+                width: 100
+            },
+            {
+                name: "End 2",
+                type: "text",
+                width: 100
+            },
+            {
+                type: "control"
+            }
+        ]
+    });
+
+    var holidays = [{
+            "ชื่อวันหยุดนักขัตฤกษ์": "",
         },
         {
-            Name: "United States",
-            Id: 1
+            "Holiday Name": "",
         },
         {
-            Name: "Canada",
-            Id: 2
+            "Holiday Name": "",
         },
         {
-            Name: "United Kingdom",
-            Id: 3
+            "Holiday Name": "",
+        },
+        {
+            "Holiday Name": "",
+        },
+        {
+            "Holiday Name": "",
+        },
+        {
+            "Holiday Name": "",
         }
     ];
 
-    $("#jsGrid").jsGrid({
+    $("#holidays").jsGrid({
         width: "100%",
         height: "400px",
 
@@ -257,42 +368,27 @@
         sorting: true,
         paging: true,
 
-        data: clients,
+        data: holidays,
 
         fields: [{
-                name: "Name",
+                name: "ชื่อวันหยุดนักขัตฤกษ์",
                 type: "text",
                 width: 150,
-                validate: "required"
             },
             {
-                name: "Age",
-                type: "number",
-                width: 50
-            },
-            {
-                name: "Address",
+                name: "วันที่",
                 type: "text",
-                width: 200
+                width: 100
             },
             {
-                name: "Country",
-                type: "select",
-                items: countries,
-                valueField: "Id",
-                textField: "Name"
-            },
-            {
-                name: "Married",
-                type: "checkbox",
-                title: "Is Married",
-                sorting: false
+                name: "Recurring",
+                type: "text",
+                width: 100
             },
             {
                 type: "control"
             }
         ]
     });
-
 </script>
 @endsection
