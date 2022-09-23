@@ -165,13 +165,17 @@ class BookingController extends Controller
         // $this->middleware('auth');
 
         $clinic = Clinic::all();
-
         //dd($clinic);
 
+        return view('clinic_configx',compact("clinic"));
+    }
 
+    public function getClinic_config(){
 
+        // $this->middleware('auth');
 
-
+        $clinic = Clinic::all();
+        //dd($clinic);
 
         return view('clinic_configx',compact("clinic"));
     }

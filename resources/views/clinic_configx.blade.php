@@ -1,7 +1,7 @@
 @extends('layouts.paperlayouts')
 
 @section('content')
-<div class="content">
+<div class="content" id="clinic">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -252,7 +252,28 @@
 
 @section('script')
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+<script src="{{url('https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js')}}"></script>
+<script src="{{url('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')}}"></script>
+<script>
+    let vueClinic = new Vue({
+        el: '#clinic',
+    data: {
 
+    },
+    mounted(){
+        this.getClinic_Config();
+    },
+    methods:{
+        getClinic_Config(){
+            //console.log("Clinic_Config Setting");
+            axios.get('/ajax_getData').then(response=>{
+                console.log(response);
+            });
+        }
+    }
+
+    })
+</script>
 
 <script>
     var workings = [{

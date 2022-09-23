@@ -31,6 +31,8 @@ Route::get('/admin' , [BookingController::class, 'adminpage'])->name('home');
 Route::get('/clinic_config' , [BookingController::class, 'clinic_config']);
 Route::get('/clinic_config_temp' , [BookingController::class, 'clinic_config_temp']);
 
+Route::get('/ajax_getData' , [BookingController::class, 'getClinic_config']);
+
 
 Auth::routes();
 
