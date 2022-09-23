@@ -18,6 +18,9 @@
   <link href="./assets1/css/paper-dashboard.css?v=2.1.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets1/demo/demo.css" rel="stylesheet" />
+
+  @yield('style')
+
 </head>
 
 <body class="">
@@ -88,6 +91,12 @@
             <a href="./clinic_config">
               <i class="nc-icon nc-settings"></i>
               <p>Clinic Config</p>
+            </a>
+          </li>
+          <li>
+            <a href="./clinic_config_temp">
+              <i class="nc-icon nc-settings"></i>
+              <p>Clinic Config Temp</p>
             </a>
           </li>
         </ul>
@@ -272,6 +281,8 @@
       });
     });
   </script>
+
+  @yield('script')
 </body>
 
 </html>

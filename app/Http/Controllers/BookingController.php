@@ -163,11 +163,28 @@ class BookingController extends Controller
 
         // $this->middleware('auth');
 
+        $list_booking = Booking::all();
+
+        $booking = Booking::all();
+
+            foreach ($list_booking as $key => $booking)
+            {
+                $list_booking[$key]->services = implode(", ", json_decode($booking->services));
+            }
 
 
+
+
+        return view('clinic_configx',compact("list_booking"));
+    }
+
+    public function clinic_config_temp(){
+
+        // $this->middleware('auth');
 
         return view('clinic_config');
     }
+
     /**
      * Show the form for creating a new resource.
      *
