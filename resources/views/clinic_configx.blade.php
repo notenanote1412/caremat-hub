@@ -15,7 +15,11 @@
                                 <div class="card-body">
                                     <label>ชื่อคลินิก</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" value="ศูนย์สุขภาพแคร์แมท เชียงใหม่">
+                                        {{-- <input type="text" class="form-control" value="ศูนย์สุขภาพแคร์แมท เชียงใหม่"> --}}
+                                        @foreach ( $clinic as $clinic )
+
+                                        <input type="text" class="form-control" value="{{$clinic->clinic_name}}">
+                                        @endforeach
                                     </div>
                                     <label>คำอธิบายคลินิก</label>
                                     <div class="form-group">

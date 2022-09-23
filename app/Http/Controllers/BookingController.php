@@ -10,6 +10,7 @@ use Carbon\Carbon;
 
 
 use App\Models\Booking;
+use App\Models\Clinic;
 use Termwind\Components\Dd;
 
 class BookingController extends Controller
@@ -163,19 +164,16 @@ class BookingController extends Controller
 
         // $this->middleware('auth');
 
-        $list_booking = Booking::all();
+        $clinic = Clinic::all();
 
-        $booking = Booking::all();
-
-            foreach ($list_booking as $key => $booking)
-            {
-                $list_booking[$key]->services = implode(", ", json_decode($booking->services));
-            }
+        //dd($clinic);
 
 
 
 
-        return view('clinic_configx',compact("list_booking"));
+
+
+        return view('clinic_configx',compact("clinic"));
     }
 
     public function clinic_config_temp(){
