@@ -36,7 +36,7 @@
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="{{URL::to('/')}}" class="simple-text logo-normal">
           CAREMAT Hub
           <!-- <div class="logo-image-big">
             <img src="./assets1/img/logo-big.png">
