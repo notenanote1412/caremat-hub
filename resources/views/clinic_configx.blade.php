@@ -253,150 +253,147 @@
 @endsection
 
 @section('script')
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
-    <script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js') }}"></script>
-    <script src="{{ url('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js') }}"></script>
-    <script>
-        let vueClinic = new Vue({
-            el: '#clinic',
-            data: {
-                clinic_config: {
-                    clinic_id: '',
-                    clinic_name: '',
-                    clinic_description: '',
-                    clinic_logo: '',
-                    clinic_phone: '',
-                    clinic_address: '',
-                    booking_time_slot: '',
-                    clinic_map: '',
-                    clinic_open_date: ''
-                }
-            },
-            methods: {
-                getClinic_Config() {
-                    //console.log("Clinic_Config Setting");
-                    axios.get('/ajax_getData')
-                        .then(response => {
-                            console.log(response.data);
-                            this.clinic_config = response.data;
-                        });
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+<script src="{{url('https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js')}}"></script>
+<script src="{{url('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')}}"></script>
+<script>
+    let vueClinic = new Vue({
+        el: '#clinic',
+    data: {
 
-                }
+        clinic_data: "";
+        clinic_description: "";
+        clinic_logo: "";
+        clinic_phone: "";
+        clinic_address: "";
+        booking_time_slot: "";
+        clinic_map: "";
+        clinic_open_date: "";
+
+    },
+    mounted(){
+        this.getClinic_Config();
+    },
+    methods:{
+        getClinic_Config(){
+            //console.log("Clinic_Config Setting");
+            axios.get('/ajax_getData').then(response=>{
+                console.log(response);
+            });
+        }
+    }
+
+    })
+</script>
+
+<script>
+    var workings = [{
+            "วัน": "อาทิตย์",
+            "Start 1": "00:00",
+            "End 1": "00:00",
+            "Start 2": "",
+            "End 2": "",
+
+        },
+        {
+            "วัน": "จันทร์",
+            "Start 1": "00:00",
+            "End 1": "00:00",
+            "Start 2": "",
+            "End 2": "",
+        },
+        {
+            "วัน": "อังคาร",
+            "Start 1": "13:00",
+            "End 1": "18:30",
+            "Start 2": "",
+            "End 2": "",
+        },
+        {
+            "วัน": "พุธ",
+            "Start 1": "13:00",
+            "End 1": "18:30",
+            "Start 2": "",
+            "End 2": "",
+        },
+        {
+            "วัน": "พฤหัสบดี",
+            "Start 1": "13:00",
+            "End 1": "18:30",
+            "Start 2": "",
+            "End 2": "",
+        },
+        {
+            "วัน": "ศุกร์",
+            "Start 1": "13:00",
+            "End 1": "18:30",
+            "Start 2": "",
+            "End 2": "",
+        },
+        {
+            "วัน": "เสาร์",
+            "Start 1": "09:10",
+            "End 1": "11:30",
+            "Start 2": "13:00",
+            "End 2": "16:30",
+        }
+    ];
+
+
+    $("#workings").jsGrid({
+        width: "100%",
+        height: "auto",
+
+        filtering: false,
+        paging: false,
+        sorting: false,
+        autoload: true,
+        inserting: false,
+        deleting: false,
+        editing: true,
+
+        data: workings,
+
+        fields: [{
+                name: "วัน",
+                type: "text",
+                readOnly: true,
+                width: 150,
             },
-            mounted() {
-                this.getClinic_Config();
+            {
+                name: "Start 1",
+                type: "text",
+                width: 100
+            },
+            {
+                name: "End 1",
+                type: "text",
+                width: 100
+            },
+            {
+                name: "Start 2",
+                type: "text",
+                width: 100
+            },
+            {
+                name: "End 2",
+                type: "text",
+                width: 100
+            },
+            {
+                type: "control",
+                editButton: false,
+                deleteButton: false,
+                clearFilterButton: false,
+                modeSwitchButton: false,
+                width: "70px",
+                deleteButtonTooltip: "Delete",
+                updateButtonTooltip: "Update",
+                cancelEditButtonTooltip: "Cancel edit",
+                insertButtonTooltip: "Insert",
             }
-        })
-    </script>
-
-    <script>
-        var workings = [{
-                "วัน": "อาทิตย์",
-                "Start 1": "00:00",
-                "End 1": "00:00",
-                "Start 2": "",
-                "End 2": "",
-
-            },
-            {
-                "วัน": "จันทร์",
-                "Start 1": "00:00",
-                "End 1": "00:00",
-                "Start 2": "",
-                "End 2": "",
-            },
-            {
-                "วัน": "อังคาร",
-                "Start 1": "13:00",
-                "End 1": "18:30",
-                "Start 2": "",
-                "End 2": "",
-            },
-            {
-                "วัน": "พุธ",
-                "Start 1": "13:00",
-                "End 1": "18:30",
-                "Start 2": "",
-                "End 2": "",
-            },
-            {
-                "วัน": "พฤหัสบดี",
-                "Start 1": "13:00",
-                "End 1": "18:30",
-                "Start 2": "",
-                "End 2": "",
-            },
-            {
-                "วัน": "ศุกร์",
-                "Start 1": "13:00",
-                "End 1": "18:30",
-                "Start 2": "",
-                "End 2": "",
-            },
-            {
-                "วัน": "เสาร์",
-                "Start 1": "09:10",
-                "End 1": "11:30",
-                "Start 2": "13:00",
-                "End 2": "16:30",
-            }
-        ];
-
-
-        $("#workings").jsGrid({
-            width: "100%",
-            height: "auto",
-
-            filtering: false,
-            paging: false,
-            sorting: false,
-            autoload: true,
-            inserting: false,
-            deleting: false,
-            editing: true,
-
-            data: workings,
-
-            fields: [{
-                    name: "วัน",
-                    type: "text",
-                    readOnly: true,
-                    width: 150,
-                },
-                {
-                    name: "Start 1",
-                    type: "text",
-                    width: 100
-                },
-                {
-                    name: "End 1",
-                    type: "text",
-                    width: 100
-                },
-                {
-                    name: "Start 2",
-                    type: "text",
-                    width: 100
-                },
-                {
-                    name: "End 2",
-                    type: "text",
-                    width: 100
-                },
-                {
-                    type: "control",
-                    editButton: false,
-                    deleteButton: false,
-                    clearFilterButton: false,
-                    modeSwitchButton: false,
-                    width: "70px",
-                    deleteButtonTooltip: "Delete",
-                    updateButtonTooltip: "Update",
-                    cancelEditButtonTooltip: "Cancel edit",
-                    insertButtonTooltip: "Insert",
-                }
-            ]
-        });
+        ]
+    });
 
         var holidays = [{
                 "รายการวันหยุด": "วันขึ้นปีใหม่",
