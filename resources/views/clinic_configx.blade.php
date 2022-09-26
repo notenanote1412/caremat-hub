@@ -16,7 +16,7 @@
                                     <label>ชื่อคลินิก</label>
                                     <div class="form-group">
                                         {{-- <input type="text" class="form-control" value="ศูนย์สุขภาพแคร์แมท เชียงใหม่"> --}}
-                                        @foreach ( $clinic as $clinic )
+                                        @foreach ( $clinic as $clinic)
 
                                         <input type="text" class="form-control" value="{{$clinic->clinic_name}}">
                                         @endforeach
@@ -258,6 +258,15 @@
     let vueClinic = new Vue({
         el: '#clinic',
     data: {
+
+        clinic_data: "";
+        clinic_description: "";
+        clinic_logo: "";
+        clinic_phone: "";
+        clinic_address: "";
+        booking_time_slot: "";
+        clinic_map: "";
+        clinic_open_date: "";
 
     },
     mounted(){

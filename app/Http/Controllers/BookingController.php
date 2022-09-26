@@ -175,9 +175,38 @@ class BookingController extends Controller
         // $this->middleware('auth');
 
         $clinic = Clinic::all();
-        //dd($clinic);
 
-        return view('clinic_configx',compact("clinic"));
+
+        //dd($clinic);
+        foreach($clinic as $clinic){
+
+            $clinic_name = $clinic->clinic_name;
+            $clinic_description	= $clinic->clinic_description;
+            $clinic_logo = $clinic->clinic_logo;
+            $clinic_phone = $clinic->clinic_phone;
+            $clinic_address = $clinic->clinic_address;
+            $booking_time_slot = $clinic->booking_time_slot;
+            $clinic_map = $clinic->clinic_map;
+            $clinic_open_date = $clinic->clinic_open_date;
+
+        }
+
+        //dd($clinic_name);
+
+        $clinic_data = [];
+
+        $clinic_data[] = $clinic_name;
+        $clinic_data[] = $clinic_description;
+        $clinic_data[] = $clinic_logo;
+        $clinic_data[] = $clinic_phone;
+        $clinic_data[] = $clinic_address;
+        $clinic_data[] = $booking_time_slot;
+        $clinic_data[] = $clinic_map;
+        $clinic_data[] = $clinic_open_date;
+
+        //dd($clinic_data);
+
+        return view('clinic_configx',compact("clinic_data","clinic"));
     }
 
     public function clinic_config_temp(){
