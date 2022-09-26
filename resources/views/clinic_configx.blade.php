@@ -260,29 +260,30 @@
     let vueClinic = new Vue({
         el: '#clinic',
     data: {
-
-        clinic_data: "";
-        clinic_description: "";
-        clinic_logo: "";
-        clinic_phone: "";
-        clinic_address: "";
-        booking_time_slot: "";
-        clinic_map: "";
-        clinic_open_date: "";
-
-    },
-    mounted(){
-        this.getClinic_Config();
+        clinic_config:{
+            clinic_id:"",
+            clinic_data: "",
+            clinic_description: "",
+            clinic_logo: "",
+            clinic_phone: "",
+            clinic_address: "",
+            booking_time_slot: "",
+            clinic_map: "",
+            clinic_open_date: ""
+        }
     },
     methods:{
         getClinic_Config(){
             //console.log("Clinic_Config Setting");
             axios.get('/ajax_getData').then(response=>{
-                console.log(response);
+                console.log(response.data);
+                this.clinic_config=response.data
             });
         }
+    },
+    mounted(){
+        this.getClinic_Config();
     }
-
     })
 </script>
 
