@@ -174,39 +174,27 @@ class BookingController extends Controller
 
         // $this->middleware('auth');
 
-        $clinic = Clinic::all();
+        $clinics = Clinic::latest()->first();
 
+        // dd($clinics);
 
+        $response = [];
         //dd($clinic);
-        foreach($clinic as $clinic){
 
-            $clinic_name = $clinic->clinic_name;
-            $clinic_description	= $clinic->clinic_description;
-            $clinic_logo = $clinic->clinic_logo;
-            $clinic_phone = $clinic->clinic_phone;
-            $clinic_address = $clinic->clinic_address;
-            $booking_time_slot = $clinic->booking_time_slot;
-            $clinic_map = $clinic->clinic_map;
-            $clinic_open_date = $clinic->clinic_open_date;
+        $response["clinic_id"] = $clinics->id;
+        $response["clinic_name"] = $clinics->clinic_name;
+        $response["clinic_description"] = $clinics->clinic_description;
+        $response["clinic_logo"] = $clinics->clinic_logo;
+        $response["clinic_phone"] = $clinics->clinic_phone;
+        $response["clinic_address"] = $clinics->clinic_address;
+        $response["booking_time_slot"] = $clinics->booking_time_slot;
+        $response["clinic_map"] = $clinics->clinic_map;
+        $response["clinic_open_date"] = $clinics->clinic_open_date;
 
-        }
+        return $response;
 
-        //dd($clinic_name);
 
-        $clinic_data = [];
-
-        $clinic_data[] = $clinic_name;
-        $clinic_data[] = $clinic_description;
-        $clinic_data[] = $clinic_logo;
-        $clinic_data[] = $clinic_phone;
-        $clinic_data[] = $clinic_address;
-        $clinic_data[] = $booking_time_slot;
-        $clinic_data[] = $clinic_map;
-        $clinic_data[] = $clinic_open_date;
-
-        //dd($clinic_data);
-
-        return view('clinic_configx',compact("clinic_data","clinic"));
+        // return view('clinic_configx', compact("response"));
     }
 
     public function clinic_config_temp(){
