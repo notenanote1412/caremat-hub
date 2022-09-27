@@ -95,6 +95,8 @@
                                     - logo clinic --}}
                                 </div>
                             </div>
+
+<<<<<<< HEAD
                         </div>
                         <div class="col-md-6">
                             <div class="card">
@@ -109,6 +111,7 @@
                                     <div id="grdHolidays"></div>
                                     <input type="hidden" id="holidaysData" name="holidaysData" />
                                 </div>
+=======
                                 <!-- Show holiday Vue data -->
                                 <div class="card">
                                     <div class="card-body">
@@ -133,6 +136,7 @@
                                        </table>
                                     </div>
                                 </div><!-- end Show holiday-->
+>>>>>>> 8760e002fb60b15cf7ac6a09e9ecf2b8624b4c59
                             </div>
                         </div>
                     </div>
@@ -167,6 +171,33 @@
 <script>
     let vueClinic = new Vue({
         el: '#clinic',
+<<<<<<< HEAD
+        data: {
+            clinic_config: {
+                clinic_id: "",
+                clinic_data: "",
+                clinic_description: "",
+                clinic_logo: "",
+                clinic_phone: "",
+                clinic_address: "",
+                booking_time_slot: "",
+                clinic_map: "",
+                clinic_open_date: ""
+            }
+        },
+        methods: {
+            getClinic_Config() {
+                //console.log("Clinic_Config Setting");
+                axios.get('/ajax_getData').then(response => {
+                    console.log(response.data);
+                    this.clinic_config = response.data
+                });
+            }
+        },
+        mounted() {
+            this.getClinic_Config();
+        }
+=======
     data: {
         clinic_config:{
             clinic_id:"",
@@ -195,6 +226,7 @@
             });
         },
         getHolidays(){
+            //console.log("Clinic_Config Setting");
             axios.get('/getHoliday').then(response=>{
                 console.log(response.data);
                 this.holidays=response.data
@@ -205,6 +237,7 @@
         this.getClinic_Config();
         this.getHolidays();
     }
+>>>>>>> 8760e002fb60b15cf7ac6a09e9ecf2b8624b4c59
     })
 </script>
 
