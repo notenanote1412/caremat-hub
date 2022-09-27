@@ -17,8 +17,8 @@ class OpeninghourSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create();
         DB::table('opening_hours')->insert([
-
             [
                 'days' => 'อาทิตย์',
                 'time_Start_1' => '00:00',
@@ -68,8 +68,6 @@ class OpeninghourSeeder extends Seeder
                 'time_Start_2' => '13:00',
                 'time_End_2' => '16:30',
             ],
-
-
         ]);
     }
 }

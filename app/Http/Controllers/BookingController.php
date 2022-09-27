@@ -12,6 +12,9 @@ use Carbon\Carbon;
 use App\Models\Booking;
 use App\Models\Clinic;
 use App\Models\Holiday;
+use App\Models\OpeningHours;
+
+
 use Termwind\Components\Dd;
 
 class BookingController extends Controller
@@ -177,10 +180,7 @@ class BookingController extends Controller
 
         $clinics = Clinic::latest()->first();
 
-        // dd($clinics);
-
         $response = [];
-        //dd($clinic);
 
         $response["clinic_id"] = $clinics->id;
         $response["clinic_name"] = $clinics->clinic_name;
@@ -193,29 +193,30 @@ class BookingController extends Controller
         $response["clinic_open_date"] = $clinics->clinic_open_date;
 
         return $response;
-        // return view('clinic_configx', compact("response"));
     }
 
     public function getHoliday(){
 
         // $this->middleware('auth');
 
-        //$holiday = Holiday::latest()->first();
         $holiday = Holiday::all();
 
         //dd($holiday);
-
-        //$response = [];
-        // //dd($clinic);
-
-        // $response["holiday_id"] = $holiday->id;
-        // $response["holiday_title"] = $holiday->holiday_title;
-        // $response["holiday_date"] = $holiday->holiday_date;
-        // $response["is_recurring"] = $holiday->is_recurring;
         $response = $holiday;
 
         return $response;
-        // return view('clinic_configx', compact("response"));
+    }
+
+    public function getOpening_Hours(){
+
+        // $this->middleware('auth');
+
+        $openingHours = OpeningHours::all();
+
+        //dd($holiday);
+        $response = $openingHours;
+
+        return $response;
     }
 
     public function clinic_config_temp(){
