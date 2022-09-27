@@ -10,70 +10,71 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <label>ชื่อคลินิก</label>
-                                    <div class="form-group">
-                                        {{-- <input type="text" class="form-control" value="ศูนย์สุขภาพแคร์แมท เชียงใหม่"> --}}
-                                        <input type="text" class="form-control" name="clinic_name" v-model="clinic_config.clinic_name">
-                                    </div>
-                                    <label>คำอธิบายคลินิก</label>
-                                    <div class="form-group">
-                                        <textarea type="text" class="form-control" name="clinic_description" v-model="clinic_config.clinic_description"></textarea>
-                                    </div>
-                                    <label>โลโก้คลินิก</label>
-                                    <div class="form-group">
-                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                            <div class="fileinput-new thumbnail">
-                                                <img src="../../assets_clinic_config/images/logo.png" alt="logo">
-                                            </div>
-                                            <div class="fileinput-preview fileinput-exists thumbnail"></div>
-                                            <div>
-                                                <span class="btn btn-rose btn-round btn-file">
-                                                    <span class="fileinput-new">Select image</span>
-                                                    <span class="fileinput-exists">Change</span>
-                                                    <input type="file" name="..." />
-                                                </span>
-                                                <a href="javascript:;" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                        <form method="POST" action="" accept-charset="UTF-8" id="frmMain" class="form-horizontal" enctype="multipart/form-data"><input name="_token" type="hidden" value="i3DQdQEPNCsUOOwzEQ9h2xRoirkIzqhAF3EOexOD">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <label>ชื่อคลินิก</label>
+                                        <div class="form-group">
+                                            {{-- <input type="text" class="form-control" value="ศูนย์สุขภาพแคร์แมท เชียงใหม่"> --}}
+                                            <input type="text" class="form-control" name="clinic_name" v-model="clinic_config.clinic_name">
+                                        </div>
+                                        <label>คำอธิบายคลินิก</label>
+                                        <div class="form-group">
+                                            <textarea type="text" class="form-control" name="clinic_description" v-model="clinic_config.clinic_description"></textarea>
+                                        </div>
+                                        <label>โลโก้คลินิก</label>
+                                        <div class="form-group">
+                                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                                <div class="fileinput-new thumbnail">
+                                                    <img src="../../assets_clinic_config/images/logo.png" alt="logo">
+                                                </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                <div>
+                                                    <span class="btn btn-rose btn-round btn-file">
+                                                        <span class="fileinput-new">Select image</span>
+                                                        <span class="fileinput-exists">Change</span>
+                                                        <input type="file" name="..." />
+                                                    </span>
+                                                    <a href="javascript:;" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <label>เบอร์โทรคลินิก</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="clinic_phone" v-model="clinic_config.clinic_phone">
-                                        {{-- <input type="text" class="form-control" value="052-005458, 094-6297666, 061-6812164"> --}}
-                                    </div>
-                                    <label>ที่อยู่คลินิก</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="clinic_address" v-model="clinic_config.clinic_address">
-                                    </div>
-                                    <label>แผนที่คลินิก (Google Map)</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="clinic_map" v-model="clinic_config.clinic_map">
-                                    </div>
-                                    <hr>
-                                    <label>Slot การจอง</label>
-                                    <div class="form-group">
-                                        {{-- <input type="text" class="form-control"> --}}
-                                        <select class="form-control" name="booking_time_slot" v-model="clinic_config.booking_time_slot">
-                                            <option>10</option>
-                                            <option>15</option>
-                                            <option>20</option>
-                                            <option>30</option>
-                                            <option>60</option>
-                                            <option>120</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group d-flex justify-content-center align-items-center">
-                                        <div class="col-md-offset-3 col-md-10">
-                                            <input class="btn btn-success" style="width: 135px; margin-top: 1rem;" type="submit" value="Save">
-                                            <a href="" class="btn btn-default" style="width: 135px; margin-top: 1rem; margin-left: 10px">Cancel</a>
+                                        <label>เบอร์โทรคลินิก</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="clinic_phone" v-model="clinic_config.clinic_phone">
+                                            {{-- <input type="text" class="form-control" value="052-005458, 094-6297666, 061-6812164"> --}}
                                         </div>
-                                    </div>
+                                        <label>ที่อยู่คลินิก</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="clinic_address" v-model="clinic_config.clinic_address">
+                                        </div>
+                                        <label>แผนที่คลินิก (Google Map)</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="clinic_map" v-model="clinic_config.clinic_map">
+                                        </div>
+                                        <hr>
+                                        <label>Slot การจอง</label>
+                                        <div class="form-group">
+                                            {{-- <input type="text" class="form-control"> --}}
+                                            <select class="form-control" name="booking_time_slot" v-model="clinic_config.booking_time_slot">
+                                                <option>10</option>
+                                                <option>15</option>
+                                                <option>20</option>
+                                                <option>30</option>
+                                                <option>60</option>
+                                                <option>120</option>
+                                            </select>
+                                        </div>
 
-                                    {{-- - clinic_name ชื่อคลินิก -> text
+                                        <div class="form-group">
+                                            <div class="col-md-offset-3 col-md-10">
+                                                <input class="btn btn-primary" style="width: 135px; margin-top: 1rem;" type="submit" value="Save">
+                                                <a href="" class="btn btn-default" style="width: 135px; margin-top: 1rem; margin-left: 10px">Cancel</a>
+                                            </div>
+                                        </div>
+
+                                        {{-- - clinic_name ชื่อคลินิก -> text
                                     - clinic_description คำอธิบายคลินิก -> text
                                     - clinic_phone เบอร์โทรคลินิก -> text
                                     - clinic_address ที่อยู่คลินิก -> text
@@ -93,25 +94,26 @@
                                         - javascript update on change ajax Vue, React
                                     - แผนที่ google map -> text
                                     - logo clinic --}}
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div id="grdWorkTimes"></div>
-                                    <input type="hidden" id="workTimesData" name="workTimesData" />
-                                </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="grdWorkTimes"></div>
+                                        <input type="hidden" id="workTimesData" name="workTimesData" />
+                                    </div>
+                                </div>
 
-                            <div class="card">
-                                <div class="card-body">
-                                    <div id="grdHolidays"></div>
-                                    <input type="hidden" id="holidaysData" name="holidaysData" />
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="grdHolidays"></div>
+                                        <input type="hidden" id="holidaysData" name="holidaysData" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div><!-- end content-->
             </div><!--  end card  -->
@@ -846,192 +848,4 @@
     });
 </script>
 
-<!-- <script>
-    var workings = [{
-            "วัน": "อาทิตย์",
-            "Start 1": "00:00",
-            "End 1": "00:00",
-            "Start 2": "",
-            "End 2": "",
-
-        },
-        {
-            "วัน": "จันทร์",
-            "Start 1": "00:00",
-            "End 1": "00:00",
-            "Start 2": "",
-            "End 2": "",
-        },
-        {
-            "วัน": "อังคาร",
-            "Start 1": "13:00",
-            "End 1": "18:30",
-            "Start 2": "",
-            "End 2": "",
-        },
-        {
-            "วัน": "พุธ",
-            "Start 1": "13:00",
-            "End 1": "18:30",
-            "Start 2": "",
-            "End 2": "",
-        },
-        {
-            "วัน": "พฤหัสบดี",
-            "Start 1": "13:00",
-            "End 1": "18:30",
-            "Start 2": "",
-            "End 2": "",
-        },
-        {
-            "วัน": "ศุกร์",
-            "Start 1": "13:00",
-            "End 1": "18:30",
-            "Start 2": "",
-            "End 2": "",
-        },
-        {
-            "วัน": "เสาร์",
-            "Start 1": "09:10",
-            "End 1": "11:30",
-            "Start 2": "13:00",
-            "End 2": "16:30",
-        }
-    ];
-
-
-    $("#workings").jsGrid({
-        width: "100%",
-        height: "auto",
-
-        filtering: false,
-        paging: false,
-        sorting: false,
-        autoload: true,
-        inserting: false,
-        deleting: false,
-        editing: true,
-
-        data: workings,
-
-        fields: [{
-                name: "วัน",
-                type: "text",
-                align: "center",
-                readOnly: true,
-                width: 150,
-            },
-            {
-                name: "Start 1",
-                type: "text",
-                align: "center",
-                width: 100
-            },
-            {
-                name: "End 1",
-                type: "text",
-                align: "center",
-                width: 100
-            },
-            {
-                name: "Start 2",
-                type: "text",
-                align: "center",
-                width: 100
-            },
-            {
-                name: "End 2",
-                type: "text",
-                align: "center",
-                width: 100
-            },
-            {
-                type: "control",
-                editButton: false,
-                deleteButton: false,
-                clearFilterButton: false,
-                modeSwitchButton: false,
-                width: "70px",
-                deleteButtonTooltip: "Delete",
-                updateButtonTooltip: "Update",
-                cancelEditButtonTooltip: "Cancel edit",
-                insertButtonTooltip: "Insert",
-            }
-        ]
-    });
-
-    var holidays = [{
-            "รายการวันหยุด": "วันขึ้นปีใหม่",
-            "วันที่": "01/01/2022"
-        },
-        {
-            "รายการวันหยุด": "วันสงกรานต์",
-            "วันที่": "13/04/2022"
-        },
-        {
-            "รายการวันหยุด": "วันฉัตรมงคล",
-            "วันที่": "05/05/2022"
-        },
-        {
-            "รายการวันหยุด": "วันแม่แห่งชาติ",
-            "วันที่": "12/08/2022"
-        },
-        {
-            "รายการวันหยุด": "วันพ่อแห่งชาติ",
-            "วันที่": "05/12/2022"
-        },
-        {
-            "รายการวันหยุด": "วันรัฐธรรมนูญ",
-            "วันที่": "10/12/2022"
-        },
-        {
-            "รายการวันหยุด": "วันปิยมหาราช",
-            "วันที่": "23/12/2022"
-        }
-    ];
-
-    $("#holidays").jsGrid({
-        width: "100%",
-        height: "auto",
-
-        filtering: false,
-        paging: false,
-        sorting: false,
-        autoload: true,
-        confirmDeleting: false,
-        inserting: true,
-        editing: true,
-
-        data: holidays,
-
-        fields: [{
-                name: "รายการวันหยุด",
-                type: "text",
-                align: "center",
-                width: 150,
-            },
-            {
-                name: "วันที่",
-                type: "text",
-                align: "center",
-                width: 100
-            },
-            {
-                name: "is_recurring",
-                title: "Recurring",
-                type: "checkbox",
-                align: "center",
-                width: "20%"
-            },
-            {
-                type: "control",
-                editButton: false,
-                deleteButton: true,
-                clearFilterButton: false,
-
-
-            }
-        ]
-    });
-</script> -->
 @endsection
