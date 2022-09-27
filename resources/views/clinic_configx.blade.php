@@ -155,7 +155,24 @@
                 booking_time_slot: "",
                 clinic_map: "",
                 clinic_open_date: ""
+            },
+            holidays:{
+                holiday_id:"",
+                holiday_title:"",
+                holiday_date:"",
+                is_recurring:"",
+
+            },
+            opening_hours:{
+                days:"",
+                time_Start_1:"",
+                time_End_1:"",
+                time_Start_2:"",
+                time_End_2:"",
+
             }
+
+
         },
         methods: {
             getClinic_Config() {
@@ -164,10 +181,26 @@
                     console.log(response.data);
                     this.clinic_config = response.data
                 });
+            },
+            getHoliday() {
+                //console.log("Clinic_Config Setting");
+                axios.get('/getHoliday').then(response => {
+                    console.log(response.data);
+                    this.holidays = response.data
+                });
+            },
+            getOpening_Hours() {
+                //console.log("Clinic_Config Setting");
+                axios.get('/getOpening_Hours').then(response => {
+                    console.log(response.data);
+                    this.opening_hours = response.data
+                });
             }
         },
         mounted() {
             this.getClinic_Config();
+            this.getHoliday();
+            this.getOpening_Hours();
         }
     })
 </script>
