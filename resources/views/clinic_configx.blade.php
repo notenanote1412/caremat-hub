@@ -169,73 +169,30 @@
                                     </div>
                                 </div>
 
+                                <!-- Show holiday Vue data -->
                                 <div class="card">
                                     <div class="card-body">
                                         <div id="holidays"></div>
-                                        {{-- <div class="table-responsive">
-                                        <table class="table" id="holidays">
+                                       <table class="table">
                                             <thead class="text-primary">
-                                                <th class="text-center">วัน</th>
-                                                <th>start1</th>
-                                                <th>end1</th>
-                                                <th>start2</th>
-                                                <th>end2</th>
+                                                <tr>
+                                                    <th class="text-center">id</th>
+                                                    <th class="text-center">title</th>
+                                                    <th class="text-center">date</th>
+                                                    <th class="text-center">is_recurring</th>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">อาทิตย์</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">จันทร์</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">อังคาร</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">พุธ</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">พฤหัสบดี</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">ศุกร์</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">เสาร์</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
-                                                    <td>00:00</td>
+                                                <tr v-for='item in holidays'>
+                                                    <td class="text-center" name="holiday_id">@{{ item.holiday_id }}</td>
+                                                    <td class="text-center" name="holiday_title">@{{ item.holiday_title }}</td>
+                                                    <td class="text-center" name="holiday_date">@{{ item.holiday_date }}</td>
+                                                    <td class="text-center" name="is_recurring">@{{ item.is_recurring }}</td>
                                                 </tr>
                                             </tbody>
-                                        </table>
-                                    </div> --}}
+                                       </table>
                                     </div>
-                                </div>
+                                </div><!-- end Show holiday-->
                             </div>
                         </div>
                     </div><!-- end content-->
@@ -270,6 +227,12 @@
             booking_time_slot: "",
             clinic_map: "",
             clinic_open_date: ""
+        },
+        holidays:{
+            holiday_id:"",
+            holiday_title:"",
+            holiday_date:"",
+            is_recurring:""
         }
     },
     methods:{
@@ -279,10 +242,18 @@
                 console.log(response.data);
                 this.clinic_config=response.data
             });
+        },
+        getHolidays(){
+            //console.log("Clinic_Config Setting");
+            axios.get('/getHoliday').then(response=>{
+                console.log(response.data);
+                this.holidays=response.data
+            });
         }
     },
     mounted(){
         this.getClinic_Config();
+        this.getHolidays();
     }
     })
 </script>
