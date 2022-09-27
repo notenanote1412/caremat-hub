@@ -329,27 +329,32 @@
         fields: [{
                 name: "วัน",
                 type: "text",
+                align: "center",
                 readOnly: true,
                 width: 150,
             },
             {
                 name: "Start 1",
                 type: "text",
+                align: "center",
                 width: 100
             },
             {
                 name: "End 1",
                 type: "text",
+                align: "center",
                 width: 100
             },
             {
                 name: "Start 2",
                 type: "text",
+                align: "center",
                 width: 100
             },
             {
                 name: "End 2",
                 type: "text",
+                align: "center",
                 width: 100
             },
             {
@@ -414,17 +419,20 @@
             fields: [{
                     name: "รายการวันหยุด",
                     type: "text",
+                    align: "center",
                     width: 150,
                 },
                 {
                     name: "วันที่",
                     type: "text",
+                    align: "center",
                     width: 100
                 },
                 {
                     name: "is_recurring",
                     title: "Recurring",
                     type: "checkbox",
+                    align: "center",
                     width: "20%"
                 },
                 {
