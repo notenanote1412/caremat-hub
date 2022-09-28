@@ -10,13 +10,15 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <form method="POST" action="" accept-charset="UTF-8" id="frmMain" class="form-horizontal" enctype="multipart/form-data"><input name="_token" type="hidden" value="i3DQdQEPNCsUOOwzEQ9h2xRoirkIzqhAF3EOexOD">
+                        <form @submit.prevent="clinic_submit()" accept-charset="UTF-8" id="frmMain" class="form-horizontal" enctype="multipart/form-data"><input name="_token" type="hidden" value="i3DQdQEPNCsUOOwzEQ9h2xRoirkIzqhAF3EOexOD">
+                            @csrf
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-body">
                                         <label>ชื่อคลินิก</label>
                                         <div class="form-group">
-                                            {{-- <input type="text" class="form-control" value="ศูนย์สุขภาพแคร์แมท เชียงใหม่"> --}}
+
+                                            <input type="hidden" class="form-control" name="clinic_id" v-model="clinic_config.clinic_id">
                                             <input type="text" class="form-control" name="clinic_name" v-model="clinic_config.clinic_name">
                                         </div>
                                         <label>คำอธิบายคลินิก</label>
@@ -31,10 +33,11 @@
                                                 </div>
                                                 <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                 <div>
-                                                    <span class="btn btn-rose btn-round btn-file">
+                                                    <span class="btn btn-rose btn-round btn-file" >
                                                         <span class="fileinput-new">Select image</span>
                                                         <span class="fileinput-exists">Change</span>
                                                         <input type="file" name="..." />
+                                                        {{-- v-model="clinic_config.clinic_logo" --}}
                                                     </span>
                                                     <a href="javascript:;" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                                                 </div>
@@ -149,7 +152,7 @@
         data: {
             clinic_config: {
                 clinic_id: "",
-                clinic_data: "",
+                clinic_name: "",
                 clinic_description: "",
                 clinic_logo: "",
                 clinic_phone: "",
@@ -174,7 +177,6 @@
 
             }
 
-
         },
         methods: {
             getClinic_Config() {
@@ -197,6 +199,44 @@
                     console.log(response.data);
                     this.opening_hours = response.data
                 });
+            },
+            clinic_submit(){
+                // console.log(this.clinic_config.clinic_id);
+                // console.log(this.clinic_config.clinic_name);
+                // console.log(this.clinic_config.clinic_description);
+                // console.log(this.clinic_config.clinic_logo);
+                // console.log(this.clinic_config.clinic_phone);
+                // console.log(this.clinic_config.clinic_address);
+                // console.log(this.clinic_config.booking_time_slot);
+                // console.log(this.clinic_config.clinic_map);
+                // return
+
+                // axios to route for save clinic config
+                let formData = new FormData()
+                let token = document.querySelector('input[name="_token"]').value
+
+                formData.append('token', token)
+
+                formData.append('clinic_id', this.clinic_config.clinic_id)
+                formData.append('clinic_name', this.clinic_config.clinic_name)
+                formData.append('clinic_description', this.clinic_config.clinic_description)
+                formData.append('clinic_logo', this.clinic_config.clinic_logo)
+                formData.append('clinic_phone', this.clinic_config.clinic_phone)
+                formData.append('clinic_address', this.clinic_config.clinic_address)
+                formData.append('booking_time_slot', this.clinic_config.booking_time_slot)
+                formData.append('clinic_map', this.clinic_config.clinic_map)
+
+                //console.log(formData)
+                axios.post("/edit_clinic", formData)
+                 .then((res)=>{
+                     if(res.data)
+                     {
+                        console.log(res.data)
+                        //location.href = "/"+ res.data;
+
+                     }
+                 })
+                 .catch( error => console.log(error))
             }
         },
         mounted() {
