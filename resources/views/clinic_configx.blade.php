@@ -32,7 +32,7 @@
                                                 </div>
                                                 <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                 <div>
-                                                    <span class="btn btn-rose btn-round btn-file" >
+                                                    <span class="btn btn-rose btn-round btn-file">
                                                         <span class="fileinput-new">Select image</span>
                                                         <span class="fileinput-exists">Change</span>
                                                         <input type="file" name="..." />
@@ -111,7 +111,7 @@
                                             <div class="panel-body">
                                                 <!--main content-->
                                                 <div class="row">
-                                                    <div id="grdWorkTimes"></div>e
+                                                    <div id="grdWorkTimes"></div>
                                                     <input type="hidden" id="workTimesData" name="workTimesData" />
                                                 </div>
                                             </div>
@@ -226,7 +226,7 @@
                     this.opening_hours = response.data
                 });
             },
-            clinic_submit(){
+            clinic_submit() {
                 // console.log(this.clinic_config.clinic_id);
                 // console.log(this.clinic_config.clinic_name);
                 // console.log(this.clinic_config.clinic_description);
@@ -254,15 +254,14 @@
 
                 //console.log(formData)
                 axios.post("/edit_clinic", formData)
-                 .then((res)=>{
-                     if(res.data)
-                     {
-                        console.log(res.data)
-                        //location.href = "/"+ res.data;
+                    .then((res) => {
+                        if (res.data) {
+                            console.log(res.data)
+                            //location.href = "/"+ res.data;
 
-                     }
-                 })
-                 .catch( error => console.log(error))
+                        }
+                    })
+                    .catch(error => console.log(error))
             }
         },
         mounted() {
