@@ -10,8 +10,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <form @submit.prevent="clinic_submit()" accept-charset="UTF-8" id="frmMain" class="form-horizontal" enctype="multipart/form-data"><input name="_token" type="hidden" value="i3DQdQEPNCsUOOwzEQ9h2xRoirkIzqhAF3EOexOD">
-                            @csrf
+                        <form method="POST" action="" accept-charset="UTF-8" id="frmMain" class="form-horizontal" enctype="multipart/form-data"><input name="_token" type="hidden" value="i3DQdQEPNCsUOOwzEQ9h2xRoirkIzqhAF3EOexOD">
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-body">
@@ -104,15 +103,38 @@
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div id="grdWorkTimes"></div>
-                                        <input type="hidden" id="workTimesData" name="workTimesData" />
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title text-center">
+                                                    ชั่วโมงทำงาน </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <!--main content-->
+                                                <div class="row">
+                                                    <div id="grdWorkTimes"></div>e
+                                                    <input type="hidden" id="workTimesData" name="workTimesData" />
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="card">
                                     <div class="card-body">
-                                        <div id="grdHolidays"></div>
-                                        <input type="hidden" id="holidaysData" name="holidaysData" />
+                                        <div class="panel panel-danger">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title text-center">
+                                                    วันหยุดและวันปิดทำการ</h3>
+                                            </div>
+                                            <div class="panel-body">
+
+                                                <!--main content-->
+                                                <div class="row">
+                                                    <div id="grdHolidays"></div>
+                                                    <input type="hidden" id="holidaysData" name="holidaysData" />
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -146,6 +168,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
 <script src="{{url('https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js')}}"></script>
 <script src="{{url('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')}}"></script>
+
 <script>
     let vueClinic = new Vue({
         el: '#clinic',
@@ -161,24 +184,27 @@
                 clinic_map: "",
                 clinic_open_date: ""
             },
-            holidays:{
-                holiday_id:"",
-                holiday_title:"",
-                holiday_date:"",
-                is_recurring:"",
+            holidays: {
+                holiday_id: "",
+                holiday_title: "",
+                holiday_date: "",
+                is_recurring: "",
 
             },
-            opening_hours:{
-                days:"",
-                time_Start_1:"",
-                time_End_1:"",
-                time_Start_2:"",
-                time_End_2:"",
+            opening_hours: {
+                days: "",
+                time_Start_1: "",
+                time_End_1: "",
+                time_Start_2: "",
+                time_End_2: "",
 
             }
 
         },
         methods: {
+            clinicSubmit() {
+                // console.log(this.$data)
+            },
             getClinic_Config() {
                 //console.log("Clinic_Config Setting");
                 axios.get('/ajax_getData').then(response => {
@@ -860,7 +886,7 @@
 
 
         $("#grdHolidays").jsGrid({
-            height: "350px",
+            height: "205px",
             width: "100%",
 
             filtering: false,
