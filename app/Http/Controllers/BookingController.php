@@ -145,6 +145,11 @@ class BookingController extends Controller
         return view('show_services', compact("title","list_booking","list_services"));
     }
 
+    public function adminsignin (){
+
+        return view('admin_signin');
+    }
+
     public function adminpage(Request $request){
 
         $this->middleware('auth');

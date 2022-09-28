@@ -27,6 +27,7 @@ Route::post('/info_input', [BookingController::class, 'info_input']);
 
 Route::get('/info_req' , [BookingController::class, 'info_request']);
 
+Route::get('/admin/signin' , [BookingController::class, 'adminsignin']);
 Route::get('/admin' , [BookingController::class, 'adminpage'])->name('home');
 Route::get('/clinic_config' , [BookingController::class, 'clinic_config']);
 Route::get('/clinic_config_temp' , [BookingController::class, 'clinic_config_temp']);
