@@ -111,9 +111,7 @@
                                             <div class="panel-body">
                                                 <!--main content-->
                                                 <div class="row">
-
-                                                    <div id="grdWorkTimes"></div>
-
+                                                    <div id="grdWorkTimes"></div>e
                                                     <input type="hidden" id="workTimesData" name="workTimesData" />
                                                 </div>
                                             </div>
@@ -133,7 +131,6 @@
                                                 <!--main content-->
                                                 <div class="row">
                                                     <div id="grdHolidays"></div>
-
                                                     <input type="hidden" id="holidaysData" name="holidaysData" />
                                                 </div>
                                             </div>
@@ -206,8 +203,8 @@
 
         },
         methods: {
-            clinicSubmit(){
-                console.log(this.$data)
+            clinicSubmit() {
+                // console.log(this.$data)
             },
             getClinic_Config() {
                 //console.log("Clinic_Config Setting");
@@ -453,7 +450,7 @@
                         }
                     }
                 },
-                {   
+                {
                     type: "control",
                     editButton: false,
                     deleteButton: false,
