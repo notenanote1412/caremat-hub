@@ -36,6 +36,11 @@ Route::get('/ajax_getData' , [BookingController::class, 'getClinic_config']);
 Route::get('/getHoliday' , [BookingController::class, 'getHoliday']);
 Route::get('/getOpening_Hours' , [BookingController::class, 'getOpening_Hours']);
 
+Route::post('/edit_clinic', [BookingController::class, 'edit_clinic']);
+
+
+
+
 
 Auth::routes();
 

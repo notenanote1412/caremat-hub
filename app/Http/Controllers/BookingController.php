@@ -218,7 +218,7 @@ class BookingController extends Controller
 
         $openingHours = OpeningHours::all();
 
-        //dd($holiday);
+        //dd($openingHours);
         $response = $openingHours;
 
         return $response;
@@ -229,6 +229,40 @@ class BookingController extends Controller
         // $this->middleware('auth');
 
         return view('clinic_config');
+    }
+
+    public function edit_clinic(Request $request){
+        //return ($request);
+        //dd($request);
+
+
+        $clinic_id = $request['clinic_id'];
+        $clinic_name = $request['clinic_name'];
+        $clinic_description = $request['clinic_description'];
+        $clinic_logo = $request['clinic_logo'];
+        $clinic_phone = $request['clinic_phone'];
+        $clinic_address = $request['clinic_address'];
+        $booking_time_slot = $request['booking_time_slot'];
+        $clinic_map = $request['clinic_map'];
+
+        if($clinic_id){
+
+            //var_dump($clinic_name);
+            $clinic_config = Clinic::where('id', '=', $clinic_id)->latest()->first()->get();
+
+            Clinic::where('id', $clinic_id)
+            ->update([
+                'clinic_name' => $clinic_name,
+                'clinic_description' => $clinic_name,
+                'clinic_logo' => $clinic_logo,
+                'clinic_phone' => $clinic_phone,
+                'clinic_address' => $clinic_address,
+                'booking_time_slot' => $booking_time_slot,
+                'clinic_map' => $clinic_map,
+            ]);
+
+            return  $clinic_config;
+        }
     }
 
     /**
