@@ -28,11 +28,11 @@
                                         <div class="form-group">
                                             <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                                 <div class="fileinput-new thumbnail">
-                                                    <img src="./assets_clinic_config/images/logo.png" alt="logo">
+                                                    <img src="../../assets_clinic_config/images/logo.png" alt="logo">
                                                 </div>
                                                 <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                 <div>
-                                                    <span class="btn btn-rose btn-round btn-file">
+                                                    <span class="btn btn-rose btn-round btn-file" >
                                                         <span class="fileinput-new">Select image</span>
                                                         <span class="fileinput-exists">Change</span>
                                                         <input type="file" name="..." />
@@ -153,12 +153,12 @@
 <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
 
 <!-- global css -->
-<link href="./assets_clinic_config/css/site.css" rel="stylesheet" type="text/css" />
-<link href="./assets_clinic_config/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="./assets_clinic_config/css/toastr.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="./assets_clinic_config/css/font-awesome.min.css">
-<link href="./assets_clinic_config/css/daterangepicker.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="./assets_clinic_config/css/bootstrap-editable.css" />
+<link href="../../assets_clinic_config/css/site.css" rel="stylesheet" type="text/css" />
+<link href="../../assets_clinic_config/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../../assets_clinic_config/css/toastr.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../../assets_clinic_config/css/font-awesome.min.css">
+<link href="../../assets_clinic_config/css/daterangepicker.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../../assets_clinic_config/css/bootstrap-editable.css" />
 
 <!-- end of global css -->
 
@@ -226,7 +226,7 @@
                     this.opening_hours = response.data
                 });
             },
-            clinic_submit() {
+            clinic_submit(){
                 // console.log(this.clinic_config.clinic_id);
                 // console.log(this.clinic_config.clinic_name);
                 // console.log(this.clinic_config.clinic_description);
@@ -254,14 +254,15 @@
 
                 //console.log(formData)
                 axios.post("/edit_clinic", formData)
-                    .then((res) => {
-                        if (res.data) {
-                            console.log(res.data)
-                            //location.href = "/"+ res.data;
+                 .then((res)=>{
+                     if(res.data)
+                     {
+                        console.log(res.data)
+                        //location.href = "/"+ res.data;
 
-                        }
-                    })
-                    .catch(error => console.log(error))
+                     }
+                 })
+                 .catch( error => console.log(error))
             }
         },
         mounted() {
@@ -273,29 +274,29 @@
 </script>
 
 <!-- global js -->
-<script src="./assets_clinic_config/js/jquery.min.js" type="text/javascript"></script>
-<script src="./assets_clinic_config/js/app.js" type="text/javascript"></script>
-<script src="./assets_clinic_config/js/utils.js" type="text/javascript"></script>
-<script src="./assets_clinic_config/js/eModal.min.js" type="text/javascript"></script>
-<script src="./assets_clinic_config/js/jquery.scrolling-tabs.min.js"></script>
-<script src="./assets_clinic_config/js/moment.min.js" type="text/javascript"></script>
-<script src="./assets_clinic_config/js/daterangepicker.js" type="text/javascript"></script>
-<script src="./assets_clinic_config/js/bootstrap-editable.min.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/jquery.min.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/app.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/utils.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/eModal.min.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/jquery.scrolling-tabs.min.js"></script>
+<script src="../../assets_clinic_config/js/moment.min.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/daterangepicker.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/bootstrap-editable.min.js" type="text/javascript"></script>
 <!-- end of global js -->
 
-<script src="./assets_clinic_config/js/toastr.min.js"></script>
-<script src="./assets_clinic_config/js/scSlider.min.js"></script>
+<script src="../../assets_clinic_config/js/toastr.min.js"></script>
+<script src="../../assets_clinic_config/js/scSlider.min.js"></script>
 
 <!-- begin page level js -->
-<script src="./assets_clinic_config/js/moment.min.js"></script>
-<script src="./assets_clinic_config/js/jasny-bootstrap.js" type="text/javascript"></script>
-<script src="./assets_clinic_config/js/select2.js" type="text/javascript"></script>
-<script src="./assets_clinic_config/js/bootstrapValidator.min.js" type="text/javascript"></script>
-<script src="./assets_clinic_config/js/tinymce.min.js" type="text/javascript"></script>
-<script src="./assets_clinic_config/js/bootstrap-colorpicker.min.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/moment.min.js"></script>
+<script src="../../assets_clinic_config/js/jasny-bootstrap.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/select2.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/bootstrapValidator.min.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/tinymce.min.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/bootstrap-colorpicker.min.js" type="text/javascript"></script>
 
-<script src="./assets_clinic_config/js/clinics.js" type="text/javascript"></script>
-<script src="./assets_clinic_config/js/jsgrid.min.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/clinics.js" type="text/javascript"></script>
+<script src="../../assets_clinic_config/js/jsgrid.min.js" type="text/javascript"></script>
 <!-- end page level js -->
 
 <script>
