@@ -7,7 +7,7 @@
 <head>
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- global js -->
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <!-- Bootstrap -->
@@ -95,7 +95,7 @@
                         <div id="forgot" class="animate form" style="background: white">
                             <form action="" autocomplete="on" method="post" role="form" id="reset_pw">
                                 <h3>
-                                    <img src="../../assets_signin/img/logo-med.png"><br>Forgot password
+                                    <img src="../../assets_signin/img/logo-mid.png"><br>Forgot password
                                 </h3>
 
                                 <p>
@@ -131,6 +131,15 @@
             </div>
         </div>
     </div>
+
+    <script src="{{url('https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js')}}"></script>
+    <script src="{{url('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')}}"></script>
+
+
+
+
+
+
 
 </body>
 

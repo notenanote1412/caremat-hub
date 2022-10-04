@@ -112,25 +112,25 @@
                                         </div>
                                     </div>
 
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="panel panel-info">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title text-center">
-                                                        ชั่วโมงทำงาน </h3>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <!--main content-->
-                                                    <div class="row">
-                                                        <div id="grdWorkTimes"></div>
-                                                        <input type="hidden" id="workTimesData" name="workTimesData" />
-                                                    </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title text-center">
+                                                    ชั่วโมงทำงาน </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <!--main content-->
+                                                <div class="row">
+                                                    <div id="grdWorkTimes"></div>e
+                                                    <input type="hidden" id="workTimesData" name="workTimesData" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
                                     <div class="card">
                                         <div class="card-body">
@@ -141,23 +141,23 @@
                                                 </div>
                                                 <div class="panel-body">
 
-                                                    <!--main content-->
-                                                    <div class="row">
-                                                        <div id="grdHolidays"></div>
-                                                        <input type="hidden" id="holidaysData" name="holidaysData" />
-                                                    </div>
+                                                <!--main content-->
+                                                <div class="row">
+                                                    <div id="grdHolidays"></div>
+                                                    <input type="hidden" id="holidaysData" name="holidaysData" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                    </div><!-- end content-->
-                </div><!--  end card  -->
-            </div> <!-- end col-md-12 -->
-        </div> <!-- end row -->
-    </div>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- end content-->
+            </div><!--  end card  -->
+        </div> <!-- end col-md-12 -->
+    </div> <!-- end row -->
+</div>
 @endsection
 
 
