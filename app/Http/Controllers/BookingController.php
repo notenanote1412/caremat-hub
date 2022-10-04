@@ -206,11 +206,34 @@ class BookingController extends Controller
 
         $holiday = Holiday::all();
 
-        //dd($holiday);
-        $response = $holiday;
+        $response = [];
+        foreach ($holiday as $key => $item)
+        {
+            $obj = [];
 
+            $obj['id']              = $item->id;
+            $obj['clinic_id']       = $item->clinic_id;
+            $obj['holiday_name']   = $item->holiday_title;
+            $obj['holiday_date']    = $item->holiday_date;
+            $obj['is_recurring']    = $item->is_recurring;
+
+            $response[] = (object) $obj;
+
+        }
         return $response;
     }
+
+    public function delete_holidays(Request $request){
+
+        // $this->middleware('auth');
+
+        $deleted = Holiday::find($request['id']);
+        $deleted->delete();
+
+        return 'deleted';
+
+    }
+
 
     public function getOpening_Hours(){
 
@@ -218,10 +241,62 @@ class BookingController extends Controller
 
         $openingHours = OpeningHours::all();
 
-        //dd($openingHours);
-        $response = $openingHours;
+      $response = [];
+
+        foreach ($openingHours as $key => $item)
+        {
+            $obj = [];
+
+            $obj['id']              = $item->id;
+            $obj['clinic_id']       = $item->clinic_id;
+            $obj['day_num']         = $key;
+            $obj['time_start_1']    = $item->time_Start_1;
+            $obj['time_end_1']      = $item->time_End_1;
+            $obj['time_start_2']    = $item->time_Start_2;
+            $obj['time_end_2']      = $item->time_End_2;
+
+            $response[] = (object) $obj;
+
+        }
 
         return $response;
+    }
+
+    public function update_workTimes(Request $request){
+
+        // เช็ค request ว่ามาจริงมั้ย
+        // อัพเดทค่าจาก request เข้าฐานข้อมูล ตาม id และ clinic_id
+        // return $request['id'];
+
+        $id = $request['id'] ;
+        $clinic_id = $request['clinic_id'] ;
+        $days = $request['day_num'] ;
+        $time_Start_1 = $request['time_start_1'];
+        $time_End_1 = $request['time_end_1'] ;
+        $time_Start_2 = $request['time_start_2'];
+        $time_End_2 = $request['time_end_2'] ;
+
+        if($clinic_id){
+
+            $day_lists = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
+
+            $time_Start_1 = $time_Start_1 ?? "";
+            $time_End_1 = $time_End_1 ?? "";
+            $time_Start_2 = $time_Start_2 ?? "";
+            $time_End_2 = $time_End_2 ?? "";
+
+            OpeningHours::where('id', $id)
+            ->update([
+                'time_Start_1' => $time_Start_1,
+                'time_End_1' => $time_End_1,
+                'time_Start_2' => $time_Start_2,
+                'time_End_2' => $time_End_2
+            ]);
+
+            $opening_hours = OpeningHours::where('id', '=', $id)->latest()->first()->get();
+
+            return  $opening_hours;
+        }
     }
 
     public function clinic_config_temp(){
@@ -234,7 +309,6 @@ class BookingController extends Controller
     public function edit_clinic(Request $request){
         //return ($request);
         //dd($request);
-
 
         $clinic_id = $request['clinic_id'];
         $clinic_name = $request['clinic_name'];
@@ -253,7 +327,7 @@ class BookingController extends Controller
             Clinic::where('id', $clinic_id)
             ->update([
                 'clinic_name' => $clinic_name,
-                'clinic_description' => $clinic_name,
+                'clinic_description' => $clinic_description,
                 'clinic_logo' => $clinic_logo,
                 'clinic_phone' => $clinic_phone,
                 'clinic_address' => $clinic_address,

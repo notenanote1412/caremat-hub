@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('opening_hours', function (Blueprint $table) {
+        Schema::create('holidays', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('clinic_id');
-            $table->string('days');
-            $table->string('time_Start_1');
-            $table->string('time_End_1');
-            $table->string('time_Start_2');
-            $table->string('time_End_2');
+            $table->string('holiday_title');
+            $table->string('holiday_date');
+            $table->string('is_recurring');
             $table->timestamps();
 
             $table->foreign('clinic_id')->references('id')->on('clinics');
@@ -35,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('opening_hours');
+        Schema::dropIfExists('holidays');
     }
 };

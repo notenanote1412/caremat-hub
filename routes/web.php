@@ -33,10 +33,16 @@ Route::get('/clinic_config' , [BookingController::class, 'clinic_config']);
 Route::get('/clinic_config_temp' , [BookingController::class, 'clinic_config_temp']);
 
 Route::get('/ajax_getData' , [BookingController::class, 'getClinic_config']);
+
 Route::get('/getHoliday' , [BookingController::class, 'getHoliday']);
+Route::post('/delete_holidays' , [BookingController::class, 'delete_holidays']);
+
 Route::get('/getOpening_Hours' , [BookingController::class, 'getOpening_Hours']);
+Route::post('/update_workTimes', [BookingController::class, 'update_workTimes']);
 
 Route::post('/edit_clinic', [BookingController::class, 'edit_clinic']);
+
+
 
 
 
