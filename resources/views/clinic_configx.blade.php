@@ -124,7 +124,7 @@
                                             <div class="panel-body">
                                                 <!--main content-->
                                                 <div class="row">
-                                                    <div id="grdWorkTimes"></div>e
+                                                    <div id="grdWorkTimes"></div>
                                                     <input type="hidden" id="workTimesData" name="workTimesData" />
                                                 </div>
                                             </div>
@@ -303,7 +303,21 @@
     <script src="../../assets_clinic_config/js/jsgrid.min.js" type="text/javascript"></script>
     <!-- end page level js -->
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
+        const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+        })
+
         $(function() {
             $("#frmMain").on('submit', function() {
                 $("#workTimesData").val(JSON.stringify($("#grdWorkTimes").jsGrid("option", "data")));
@@ -997,7 +1011,6 @@
                                                         icon: 'success',
                                                         showCloseButton: true,
                                                         onClose: () => {
-
                                                             // เมื่อตกลง เรียกใช้ function setHolidayTable()
                                                             setHolidayTable()
                                                         }
@@ -1010,7 +1023,51 @@
 
                                 })
 
-                            }
+                            },
+                            onItemInserting: function(args) {
+                                // cancel insertion of the item with empty 'name' field
+                                console.log(args.item);
+                                axios.post("/insert_holidays", args.item)
+                                .then((res) => {
+                                    console.log(res.data);
+                                    // เมื่อ insert สำเร็จ แสดง alert แจ้งว่า 'Successfully'
+                                    if (res.data == 'success') {
+                                        Swal.fire({
+                                            position: 'top-end',
+                                            icon: 'success',
+                                            title: 'Your work has been saved',
+                                            showConfirmButton: false,
+                                            timer: 1500,
+                                            didClose: () => {
+                                                    // เมื่อตกลง เรียกใช้ function setHolidayTable()
+                                                    setHolidayTable()
+                                                }
+                                            })
+                                        }
+                                    })
+                            },
+                            onItemUpdating: function(args) {
+                            // cancel update of the item with empty 'name' field
+                            console.log(args.item);
+                            axios.post("/update_holiday", args.item)
+                                .then((res) => {
+                                    //console.log(res.data)
+                                    if (res.data) {
+
+                                        Swal.fire({
+                                            position: 'top-end',
+                                            icon: 'success',
+                                            title: 'Your work has been saved',
+                                            showConfirmButton: false,
+                                            timer: 1500,
+                                            didClose: () => {
+                                                // เมื่อตกลง เรียกใช้ function setHolidayTable()
+                                                setHolidayTable()
+                                            }
+                                        })
+                                    }
+                                })
+                            },
                         });
                     });
             }

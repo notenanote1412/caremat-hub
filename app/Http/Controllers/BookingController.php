@@ -233,6 +233,60 @@ class BookingController extends Controller
         return 'deleted';
 
     }
+    public function insert_holidays(Request $request){
+
+        // $this->middleware('auth');
+
+        $holiday_title =  $request['holiday_name'];
+        $holiday_date =  $request['holiday_date'];
+        $is_recurring =  $request['is_recurring'];
+
+        $holiday = new Holiday;
+
+        $holiday->holiday_title         =  $holiday_title;
+        $holiday->holiday_date          =  $holiday_date;
+        $holiday->is_recurring          =  $is_recurring;
+
+        $holiday->save();
+
+        return 'success';
+
+    }
+
+    public function update_holiday(Request $request){
+
+        // เช็ค request ว่ามาจริงมั้ย
+        //return $request;
+        // อัพเดทค่าจาก request เข้าฐานข้อมูล ตาม id
+        // return $request['id'];
+
+        $id = $request['id'] ;
+        $clinic_id = $request['clinic_id'] ;
+        $holiday_title =  $request['holiday_name'];
+        $holiday_date =  $request['holiday_date'];
+        $is_recurring =  $request['is_recurring'];
+
+
+
+        if($id){
+            //$clinic_id = $clinic_id ?? "";
+            $holiday_title = $holiday_title ?? "";
+            $holiday_date = $holiday_date ?? "";
+            $is_recurring = $is_recurring ?? "";
+
+            Holiday::where('id', $id)
+            ->update([
+                'clinic_id' => $clinic_id,
+                'holiday_title' => $holiday_title,
+                'holiday_date' => $holiday_date,
+                'is_recurring' => $is_recurring,
+            ]);
+
+            $holiday = Holiday::where('id', '=', $id)->latest()->first()->get();
+
+        }
+        return  $holiday;
+    }
 
 
     public function getOpening_Hours(){
@@ -265,7 +319,7 @@ class BookingController extends Controller
     public function update_workTimes(Request $request){
 
         // เช็ค request ว่ามาจริงมั้ย
-        // อัพเดทค่าจาก request เข้าฐานข้อมูล ตาม id และ clinic_id
+        // อัพเดทค่าจาก request เข้าฐานข้อมูล ตาม id
         // return $request['id'];
 
         $id = $request['id'] ;
@@ -322,6 +376,7 @@ class BookingController extends Controller
         if($clinic_id){
 
             //var_dump($clinic_name);
+
             $clinic_config = Clinic::where('id', '=', $clinic_id)->latest()->first()->get();
 
             Clinic::where('id', $clinic_id)
