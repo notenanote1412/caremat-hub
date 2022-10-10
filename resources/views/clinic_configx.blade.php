@@ -10,9 +10,9 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <form method="POST" action="" accept-charset="UTF-8" id="frmMain" class="form-horizontal"
-                                enctype="multipart/form-data"><input name="_token" type="hidden"
-                                    value="i3DQdQEPNCsUOOwzEQ9h2xRoirkIzqhAF3EOexOD">
+                            <form @submit.prevent="clinic_submit()" accept-charset="UTF-8" id="frmMain" class="form-horizontal"
+                                enctype="multipart/form-data">
+                                @csrf
                                 <div class="col-md-6">
                                     <div class="card">
                                         <div class="card-body">
@@ -32,16 +32,17 @@
                                             <div class="form-group">
                                                 <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                                     <div class="fileinput-new thumbnail">
-                                                        <img src="../../assets_clinic_config/images/logo.png"
+                                                        <img :src="clinic_config.clinic_logo"
                                                             alt="logo">
                                                     </div>
                                                     <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                     <div>
                                                         <span class="btn btn-rose btn-round btn-file">
+
                                                             <span class="fileinput-new">Select image</span>
                                                             <span class="fileinput-exists">Change</span>
-                                                            <input type="file" name="..." />
-                                                            {{-- v-model="clinic_config.clinic_logo" --}}
+                                                            <input type="file" name="clinic_logo" v-on:change="onFileChange($event)" ref="file"/>
+                                                            {{-- v-on:change="onFileChange" " --}}
                                                         </span>
                                                         <a href="javascript:;"
                                                             class="btn btn-danger btn-round fileinput-exists"
@@ -88,27 +89,6 @@
                                                         style="width: 135px; margin-top: 1rem; margin-left: 10px">Cancel</a>
                                                 </div>
                                             </div>
-
-                                            {{-- - clinic_name ชื่อคลินิก -> text
-                                    - clinic_description คำอธิบายคลินิก -> text
-                                    - clinic_phone เบอร์โทรคลินิก -> text
-                                    - clinic_address ที่อยู่คลินิก -> text
-                                    - booking_time_slot time slot -> select
-
-                                    - services -> table services
-                                        - id
-                                        - clinic_id
-                                        - service_name
-                                        - description
-                                        - picture
-                                    - วันที่ให้บริการ table -> ปรับค่าได้ ใส่ช่วงเวลา
-                                    - วันหยุดให้บริการ table -> เพิ่ม ลบ -> ครั้งเดียว, ซ้ำ
-                                        - เซพใน ฐานข้อมูล
-                                        - id, holiday_title, holiday_date, is_recurring -> edit, ลบ
-                                        - ปุ่ม เพิ่ม
-                                        - javascript update on change ajax Vue, React
-                                    - แผนที่ google map -> text
-                                    - logo clinic --}}
                                         </div>
                                     </div>
 
@@ -190,12 +170,13 @@
                     clinic_id: "",
                     clinic_name: "",
                     clinic_description: "",
-                    clinic_logo: "",
+                    clinic_logo: "../../assets_clinic_config/images/logo.png",
                     clinic_phone: "",
                     clinic_address: "",
                     booking_time_slot: "",
                     clinic_map: "",
-                    clinic_open_date: ""
+                    clinic_open_date: "",
+                    //file:''
                 },
                 holidays: {
                     holiday_id: "",
@@ -215,32 +196,18 @@
 
             },
             methods: {
-                clinicSubmit() {
-                    // console.log(this.$data)
+                onFileChange(e) {
+                    this.clinic_config.clinic_logo = this.$refs.file.files[0]
                 },
+
                 getClinic_Config() {
                     //console.log("Clinic_Config Setting");
                     axios.get('/ajax_getData').then(response => {
-                        console.log(response.data);
+                        // console.log(response.data);
                         this.clinic_config = response.data
                     });
                 },
-                // getHoliday() {
-                //     //console.log("Clinic_Config Setting");
-                //     axios.get('/getHoliday').then(response => {
-                //         console.log(response.data);
-                //         this.holidays = response.data
-                //     });
-                // },
-                // getOpening_Hours() {
-                //     //console.log("Clinic_Config Setting");
-                //     axios.get('/getOpening_Hours').then(response => {
-                //         console.log(response.data);
-                //         this.opening_hours = response.data
-                //     });
-                // },
-                clinic_submit() {
-                    // console.log(this.clinic_config.clinic_id);
+                clinic_submit(e) {
 
                     // axios to route for save clinic config
                     let formData = new FormData()
@@ -257,13 +224,13 @@
                     formData.append('booking_time_slot', this.clinic_config.booking_time_slot)
                     formData.append('clinic_map', this.clinic_config.clinic_map)
 
+                    //formData.append('file', this.file)
+
                     //console.log(formData)
                     axios.post("/edit_clinic", formData)
                         .then((res) => {
                             if (res.data) {
-                                console.log(res.data)
-                                //location.href = "/"+ res.data;
-
+                                // console.log(res.data)
                             }
                         })
                         .catch(error => console.log(error))
@@ -528,7 +495,7 @@
                             axios.post("/update_workTimes", args.item)
                                 .then((res) => {
                                     if (res.data) {
-                                        console.log(res.data)
+                                        // console.log(res.data)
                                         //location.href = "/"+ res.data;
                                     }
                                 })
@@ -873,7 +840,7 @@
                 axios.get('/getHoliday')
                     .then(response => {
 
-                        console.log(response.data);
+                        // console.log(response.data);
                         holidays = response.data
 
                         var HolidayDateField = function(config) {
@@ -1026,10 +993,10 @@
                             },
                             onItemInserting: function(args) {
                                 // cancel insertion of the item with empty 'name' field
-                                console.log(args.item);
+                                // console.log(args.item);
                                 axios.post("/insert_holidays", args.item)
                                 .then((res) => {
-                                    console.log(res.data);
+                                    // console.log(res.data);
                                     // เมื่อ insert สำเร็จ แสดง alert แจ้งว่า 'Successfully'
                                     if (res.data == 'success') {
                                         Swal.fire({
@@ -1048,7 +1015,7 @@
                             },
                             onItemUpdating: function(args) {
                             // cancel update of the item with empty 'name' field
-                            console.log(args.item);
+                            // console.log(args.item);
                             axios.post("/update_holiday", args.item)
                                 .then((res) => {
                                     //console.log(res.data)

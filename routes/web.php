@@ -44,6 +44,10 @@ Route::post('/update_holiday' , [BookingController::class, 'update_holiday']);
 Route::get('/getOpening_Hours' , [BookingController::class, 'getOpening_Hours']);
 Route::post('/update_workTimes', [BookingController::class, 'update_workTimes']);
 
+//Route fetchWorkTimes
+Route::get('/fetchWorkTimes', [BookingController::class, 'fetchWorkTimes']);
+
+
 
 
 

@@ -361,18 +361,52 @@ class BookingController extends Controller
     }
 
     public function edit_clinic(Request $request){
-        //return ($request);
+        // return ($request);
         //dd($request);
 
-        $clinic_id = $request['clinic_id'];
-        $clinic_name = $request['clinic_name'];
-        $clinic_description = $request['clinic_description'];
-        $clinic_logo = $request['clinic_logo'];
-        $clinic_phone = $request['clinic_phone'];
-        $clinic_address = $request['clinic_address'];
-        $booking_time_slot = $request['booking_time_slot'];
-        $clinic_map = $request['clinic_map'];
+        if(isset($_FILES['clinic_logo'])){
 
+            $ext_allow = ['png', 'jpg', 'jpeg'];
+
+            $file_name = explode(".", $_FILES['clinic_logo']['name']);
+
+            $ext = $file_name[1];
+
+            $file_path = './upload_image/clinic_logo.png';
+
+            if(in_array($ext, $ext_allow)) {
+
+                move_uploaded_file($_FILES['clinic_logo']['tmp_name'], $file_path);
+                // return $_FILES['clinic_logo'];
+            }
+
+        }
+
+        // return $file_path;
+
+        $clinic_id = $request->get('clinic_id');
+        $clinic_name = $request->get('clinic_name');
+        $clinic_description = $request->get('clinic_description');
+        $clinic_logo = $file_path;
+        $clinic_phone = $request->get('clinic_phone');
+        $clinic_address = $request->get('clinic_address');
+        $booking_time_slot = $request->get('booking_time_slot');
+        $clinic_map = $request->get('clinic_map');
+
+            // if($request->hasFile('clinic_logo')){
+
+            //     $file = $request->file('clinic_logo');
+
+            //     return $file->getClientOriginalName();
+            //     return $file->getSize();
+            //     return $file->getClientOriginalExtension();
+            //     return $file;
+
+            //     $file_name = time().'.'.$file->getClientOriginalName();
+            //     $file->move(public_path('image'), $file_name);
+            // }
+
+        // return  $clinic_id;
         if($clinic_id){
 
             //var_dump($clinic_name);
@@ -392,6 +426,59 @@ class BookingController extends Controller
 
             return  $clinic_config;
         }
+    }
+
+    public function fetchWorkTimes(){
+
+
+            $holiday = Holiday::all();
+
+            $clinic_holiday = [];
+
+            foreach($holiday as $item) {
+
+                if($item->is_recurring) {
+                    $holiday_arr = explode("-", $item->holiday_date);
+                    $clinic_holiday[] = date("Y") . "-".$holiday_arr[1]."-" . $holiday_arr[2];
+
+                    continue;
+                }
+
+                $clinic_holiday[] = $item->holiday_date;
+
+            }
+
+            $workday = OpeningHours::all();
+
+            $clinic_work_time = [];
+
+            foreach($workday as $item) {
+
+                    $clinic_work_time[$item->day_eng] = [
+
+                        "booking_start1"  => $booking_start1 = $item->time_Start_1,
+                        "booking_end1"    => $booking_end1   = $item->time_End_1 ,
+                        "booking_start2"  => $booking_start2 = $item->time_Start_2,
+                        "booking_end2"    => $booking_end2   = $item->time_End_2,
+
+                    ];
+            }
+
+            $clinics = Clinic::latest()->first();
+            $clinic_email = "clinic@gmail.com";
+            $response = [
+                "clinic_name" => $clinics->id,
+                "clinic_title" => $clinics->clinic_name,
+                "clinic_address" => $clinics->clinic_description,
+                "clinic_phone" => $clinics->clinic_phone,
+                "clinic_email" => $clinic_email,
+                "clinic_booking_slot" => $clinics->booking_time_slot,
+                "clinic_holiday" => $clinic_holiday,
+                "clinic_work_time" => $clinic_work_time,
+            ];
+
+        return $response;
+
     }
 
     /**

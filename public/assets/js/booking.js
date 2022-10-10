@@ -13,8 +13,7 @@ let vueBooking = new Vue({
     class_step_3: "",
     class_step_4: "",
     class_step_5: "",
-    clinic_config: [
-      {
+    clinic_config: {
         clinic_name: 'คลินิกเทคนิกการแพทย์แคร์แมท เชียงใหม่',
         clinic_title: 'บริการจองตรวจคลินิก แคร์แมท',
         clinic_address: '1234 มหิดล ป่าแดด เมือง เชียงใหม่ 50000',
@@ -66,18 +65,20 @@ let vueBooking = new Vue({
             booking_end2: '',
           },
         },
-      },
-    ],
+    },
     lists: {
       date_lists: [],
     },
   },
   methods: {
     fetchClnic() {
-      axios
-        .post('ajax/fetchClinicData.php')
+
+        axios.get('/fetchWorkTimes')
         .then((response) => {
-          this.clinic_config = response.data;
+            // console.log(response.data);
+            this.clinic_config = response.data;
+
+            this.generate_day_list();
         })
         .catch((error) => console.log(error));
     },
@@ -90,7 +91,7 @@ let vueBooking = new Vue({
       return true;
     },
     show_slot_lists() {
-      let clinic = this.clinic_config[0];
+      let clinic = this.clinic_config;
 
       let start_hour_1 = parseInt(
         clinic.clinic_work_time.Monday.booking_start1.split(':')[0]
@@ -238,7 +239,7 @@ let vueBooking = new Vue({
     },
     checkHoliday(check_date) {
       // while date not holiday, date not alreay in list, date work_time slot 1 isset
-      let clinic = this.clinic_config[0];
+      let clinic = this.clinic_config;
       let slot_value = parseInt(clinic.clinic_booking_slot);
 
       let end_hour_1 = parseInt(
@@ -276,11 +277,11 @@ let vueBooking = new Vue({
         .format('YYYY-MM-DD HH:mm');
 
       while (
-        this.clinic_config[0].clinic_holiday.includes(check_date) ||
+        this.clinic_config.clinic_holiday.includes(check_date) ||
         this.lists.date_lists.includes(check_date) ||
-        this.clinic_config[0].clinic_work_time[dayjs(check_date).format('dddd')]
+        this.clinic_config.clinic_work_time[dayjs(check_date).format('dddd')]
           .booking_start1 == '' ||
-        this.clinic_config[0].clinic_work_time[dayjs(check_date).format('dddd')]
+        this.clinic_config.clinic_work_time[dayjs(check_date).format('dddd')]
           .booking_end1 == ''
         || (slot_end1 <= dayjs().format('YYYY-MM-DD HH:mm') && slot_end2 <= dayjs().format('YYYY-MM-DD HH:mm'))
       ) {
@@ -362,6 +363,7 @@ let vueBooking = new Vue({
   },
   computed: {},
   mounted() {
-    this.generate_day_list();
+
+    this.fetchClnic();
   },
 });
