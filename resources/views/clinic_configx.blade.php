@@ -390,6 +390,7 @@
 
                     var timeValidation = function(value, item) {
                         if (value.length == 0) return true;
+
                         return /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(value);
                     };
 
@@ -491,15 +492,53 @@
                             }
                         ],
                         onItemUpdating: function(args) {
-                            // cancel update of the item with empty 'name' field
-                            axios.post("/update_workTimes", args.item)
+                            //ถ้าหาก start 1 >= end 1
+                            if(args.item.time_start_1 >= args.item.time_end_1){
+                                return Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'warning',
+                                    title: 'กรุณากรอกเวลาเริ่ม 1 (start1) ให้น้อยกว่า เวลาสิ้นสุด 1 (end 1) ',
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                });
+                            }else if(args.item.time_end_1 > args.item.time_start_2){ //ถ้า end 1 < start 2
+                                return Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'warning',
+                                    title: 'กรุณากรอกเวลาสิ้นสุด 1  ให้น้อยกว่าหรือเท่ากับ เวลาเริ่ม 2 (start2) ',
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                });
+                            }else if(args.item.time_start_2 >= args.item.time_end_2){
+                                return Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'warning',
+                                    title: 'กรุณากรอกเวลาเริ่ม 2 (start 2) ให้น้อยกว่า เวลาสิ้นสุด 2 (end 2) ',
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                });
+
+                            }else{
+                                axios.post("/update_workTimes", args.item)
                                 .then((res) => {
                                     if (res.data) {
-                                        // console.log(res.data)
-                                        //location.href = "/"+ res.data;
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Your work has been saved',
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                    })
                                     }
                                 })
                                 .catch(error => console.log(error))
+                            }
+                            // console.log(args.item.time_start_1);
+                            // console.log(args.item.time_end_1);
+                            // console.log(args.item.time_start_2);
+                            // console.log(args.item.time_end_2);
+                            //return
+                                // cancel update of the item with empty 'name' field
                             // if (args.item.name === "") {
                             //     args.cancel = true;
                             //     alert("Specify the name of the item!");
