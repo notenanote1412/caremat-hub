@@ -65,6 +65,7 @@ let vueBooking = new Vue({
             booking_end2: '',
           },
         },
+        used_slot: [],
     },
     lists: {
       date_lists: [],
@@ -75,7 +76,9 @@ let vueBooking = new Vue({
 
         axios.get('/fetchWorkTimes')
         .then((response) => {
-            // console.log(response.data);
+
+            console.log(response);
+
             this.clinic_config = response.data;
 
             this.generate_day_list();
@@ -182,21 +185,32 @@ let vueBooking = new Vue({
         // console.log(dayjs(item).format('dddd'))
 
         while (time_slot1 < slot_end1) {
-          this.slot_arr.push(time_slot1);
-          time_slot1 = dayjs(time_slot1)
-            .add(slot_value, 'minute')
-            .format('YYYY-MM-DD HH:mm');
+
+            // ถ้าเวลานี้ยังไม่ได้เลือก ให้เพิ่ม slot เข้าไป
+            if(!this.checkUsedSlot(time_slot1)) {
+                this.slot_arr.push(time_slot1);
+            }
+
+            time_slot1 = dayjs(time_slot1).add(slot_value, 'minute').format('YYYY-MM-DD HH:mm');
+
         }
 
         while (time_slot2 < slot_end2) {
-          this.slot_arr.push(time_slot2);
-          time_slot2 = dayjs(time_slot2)
-            .add(slot_value, 'minute')
-            .format('YYYY-MM-DD HH:mm');
+
+            if(!this.checkUsedSlot(time_slot2)) {
+                this.slot_arr.push(time_slot2);
+            }
+            time_slot2 = dayjs(time_slot2).add(slot_value, 'minute').format('YYYY-MM-DD HH:mm');
         }
       });
 
       // console.log(this.slot_arr)
+    },
+    checkUsedSlot(time_slot) {
+
+        if(!this.clinic_config.used_slot.includes(time_slot)) return false
+
+        return true
     },
     time_slot_checked(slot) {
         this.slot_selected = slot
@@ -215,8 +229,8 @@ let vueBooking = new Vue({
 
       axios.post("/select_time", formData)
       .then((res) => {
-        console.log(res.data)
 
+        console.log(res.data)
         location.href = "/info?reference="+ res.data;
       })
       .catch( error => console.log(error))
@@ -242,11 +256,9 @@ let vueBooking = new Vue({
       let clinic = this.clinic_config;
       let slot_value = parseInt(clinic.clinic_booking_slot);
 
-      let end_hour_1 = parseInt(
-        clinic.clinic_work_time[
-          dayjs(check_date).format('dddd')
-        ].booking_end1.split(':')[0]
-      );
+      // clinic.clinic_work_time['Monday'].booking_end1.split(':')[0])
+      let end_hour_1 = parseInt(clinic.clinic_work_time[dayjs(check_date).format('dddd')].booking_end1.split(':')[0]);
+
       let end_minute_1 = parseInt(
         clinic.clinic_work_time[
           dayjs(check_date).format('dddd')
@@ -264,6 +276,12 @@ let vueBooking = new Vue({
         ].booking_end2.split(':')[1]
       );
 
+    //   18:30
+    //   end_hour_1 = 18
+    //   end_minute_1 = 30
+    //   slot_value = 30
+
+    // final slot = end time - slot -> end time = 18:30 final slot = 18:30 - 30 = 18:00
       let slot_end1 = dayjs(check_date)
         .hour(end_hour_1)
         .minute(end_minute_1)
@@ -279,13 +297,10 @@ let vueBooking = new Vue({
       while (
         this.clinic_config.clinic_holiday.includes(check_date) ||
         this.lists.date_lists.includes(check_date) ||
-        this.clinic_config.clinic_work_time[dayjs(check_date).format('dddd')]
-          .booking_start1 == '' ||
-        this.clinic_config.clinic_work_time[dayjs(check_date).format('dddd')]
-          .booking_end1 == ''
-        || (slot_end1 <= dayjs().format('YYYY-MM-DD HH:mm') && slot_end2 <= dayjs().format('YYYY-MM-DD HH:mm'))
+        this.clinic_config.clinic_work_time[dayjs(check_date).format('dddd')].booking_start1 == '' ||
+        this.clinic_config.clinic_work_time[dayjs(check_date).format('dddd')].booking_end1 == '' ||
+        (slot_end1 <= dayjs().format('YYYY-MM-DD HH:mm') && slot_end2 <= dayjs().format('YYYY-MM-DD HH:mm'))
       ) {
-
           end_hour_1 = parseInt(
           clinic.clinic_work_time[
             dayjs(check_date).format('dddd')
@@ -359,11 +374,16 @@ let vueBooking = new Vue({
       setTimeout(() => {
         this.step = step
       }, 300);
-    }
+    },
+    // getServiceData() {
+    //     axios.get('/select_service').then(response => {
+    //         console.log(response.data);
+    //     });
+    // }
   },
   computed: {},
   mounted() {
-
     this.fetchClnic();
+    //this.getServiceData();
   },
 });

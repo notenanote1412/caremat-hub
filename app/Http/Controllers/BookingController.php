@@ -43,8 +43,6 @@ class BookingController extends Controller
         $title = "เชียงใหม่";
         $booking = new Booking;
 
-
-
         $reference = Str::random(6);
 
         $services = [];
@@ -55,6 +53,9 @@ class BookingController extends Controller
         if($request->service_hepB) $services[] = $request->service_hepB;
         if($request->service_hepC) $services[] = $request->service_hepC;
         if($request->service_consult) $services[] = $request->service_consult;
+
+        $service = json_encode($services);
+        //return $service;
 
         $booking->services = json_encode($services);
         $booking->reference = $reference;
@@ -361,8 +362,15 @@ class BookingController extends Controller
     }
 
     public function edit_clinic(Request $request){
-        // return ($request);
-        //dd($request);
+
+        $update_array = [
+            'clinic_name' => $request->get('clinic_name'),
+            'clinic_description' => $request->get('clinic_description'),
+            'clinic_phone' => $request->get('clinic_phone'),
+            'clinic_address' => $request->get('clinic_address'),
+            'booking_time_slot' => $request->get('booking_time_slot'),
+            'clinic_map' => $request->get('clinic_map'),
+        ];
 
         if(isset($_FILES['clinic_logo'])){
 
@@ -372,60 +380,21 @@ class BookingController extends Controller
 
             $ext = $file_name[1];
 
-            $file_path = './upload_image/clinic_logo.png';
+            $date_stamp = date("His");
+
+            $file_path = "./upload_image/clinic_logo_{$date_stamp}.png";
 
             if(in_array($ext, $ext_allow)) {
 
                 move_uploaded_file($_FILES['clinic_logo']['tmp_name'], $file_path);
-                // return $_FILES['clinic_logo'];
+
             }
 
+            $update_array['clinic_logo'] = $file_path;
+
         }
 
-        // return $file_path;
-
-        $clinic_id = $request->get('clinic_id');
-        $clinic_name = $request->get('clinic_name');
-        $clinic_description = $request->get('clinic_description');
-        $clinic_logo = $file_path;
-        $clinic_phone = $request->get('clinic_phone');
-        $clinic_address = $request->get('clinic_address');
-        $booking_time_slot = $request->get('booking_time_slot');
-        $clinic_map = $request->get('clinic_map');
-
-            // if($request->hasFile('clinic_logo')){
-
-            //     $file = $request->file('clinic_logo');
-
-            //     return $file->getClientOriginalName();
-            //     return $file->getSize();
-            //     return $file->getClientOriginalExtension();
-            //     return $file;
-
-            //     $file_name = time().'.'.$file->getClientOriginalName();
-            //     $file->move(public_path('image'), $file_name);
-            // }
-
-        // return  $clinic_id;
-        if($clinic_id){
-
-            //var_dump($clinic_name);
-
-            $clinic_config = Clinic::where('id', '=', $clinic_id)->latest()->first()->get();
-
-            Clinic::where('id', $clinic_id)
-            ->update([
-                'clinic_name' => $clinic_name,
-                'clinic_description' => $clinic_description,
-                'clinic_logo' => $clinic_logo,
-                'clinic_phone' => $clinic_phone,
-                'clinic_address' => $clinic_address,
-                'booking_time_slot' => $booking_time_slot,
-                'clinic_map' => $clinic_map,
-            ]);
-
-            return  $clinic_config;
-        }
+        return Clinic::where('id', $request->get('clinic_id'))->update($update_array);
     }
 
     public function fetchWorkTimes(){
@@ -476,6 +445,17 @@ class BookingController extends Controller
                 "clinic_holiday" => $clinic_holiday,
                 "clinic_work_time" => $clinic_work_time,
             ];
+
+            $bookings = Booking::where('booking_date', ">=", date("Y-m-d"))->get();
+
+            $used_slot = [];
+
+            foreach($bookings as $item) {
+                $used_slot[] = "{$item->booking_date} {$item->booking_time_start}";
+            }
+
+
+            $response['used_slot'] = $used_slot;
 
         return $response;
 

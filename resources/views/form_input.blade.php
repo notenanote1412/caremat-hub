@@ -89,10 +89,8 @@
 
                         axios.post("/info_input", formData)
                             .then((res) => {
-
                                 // console.log(res.data);
                                 // return
-
                                 if(res.data){
                                     location.href = "/info_req?reference="+ res.data;
                                 } else {
@@ -101,7 +99,6 @@
                                         'warning'
                                     )
                                 }
-
                             })
                             .catch( error => console.log(error))
 

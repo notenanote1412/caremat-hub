@@ -10,8 +10,8 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <form @submit.prevent="clinic_submit()" accept-charset="UTF-8" id="frmMain" class="form-horizontal"
-                                enctype="multipart/form-data">
+                            <form @submit.prevent="clinic_submit()" accept-charset="UTF-8" id="frmMain"
+                                class="form-horizontal" enctype="multipart/form-data">
                                 @csrf
                                 <div class="col-md-6">
                                     <div class="card">
@@ -32,8 +32,7 @@
                                             <div class="form-group">
                                                 <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                                     <div class="fileinput-new thumbnail">
-                                                        <img :src="clinic_config.clinic_logo"
-                                                            alt="logo">
+                                                        <img :src="clinic_config.clinic_logo" alt="logo">
                                                     </div>
                                                     <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                     <div>
@@ -41,7 +40,8 @@
 
                                                             <span class="fileinput-new">Select image</span>
                                                             <span class="fileinput-exists">Change</span>
-                                                            <input type="file" name="clinic_logo" v-on:change="onFileChange($event)" ref="file"/>
+                                                            <input type="file" name="clinic_logo"
+                                                                v-on:change="onFileChange($event)" ref="file" />
                                                             {{-- v-on:change="onFileChange" " --}}
                                                         </span>
                                                         <a href="javascript:;"
@@ -70,8 +70,8 @@
                                             <label>Slot การจอง</label>
                                             <div class="form-group">
                                                 {{-- <input type="text" class="form-control"> --}}
-                                                <select class="form-control" name="booking_time_slot"
-                                                    v-model="clinic_config.booking_time_slot">
+                                                <select class="form-control" style="padding: 6px 12px;"
+                                                    name="booking_time_slot" v-model="clinic_config.booking_time_slot">
                                                     <option>10</option>
                                                     <option>15</option>
                                                     <option>20</option>
@@ -80,6 +80,45 @@
                                                     <option>120</option>
                                                 </select>
                                             </div>
+
+                                            {{-- <div class="form-group">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control border-input"
+                                                    placeholder="Last Name" value="Faker">
+                                            </div> --}}
+
+                                            {{-- <div class="btn-group bootstrap-select dropup open">
+                                                <select class=" selectpicker" data-style="btn btn-danger btn-block"
+                                                    title="Single Select" data-size="7" tabindex="-98">
+                                                    <option class="bs-title-option" value="">Single Select</option>
+                                                    <option value="id">Bahasa Indonesia</option>
+                                                    <option value="ms">Bahasa Melayu</option>
+                                                    <option value="ca">Català</option>
+                                                    <option value="da">Dansk</option>
+                                                    <option value="de">Deutsch</option>
+                                                    <option value="en">English</option>
+                                                    <option value="es">Español</option>
+                                                    <option value="el">Eλληνικά</option>
+                                                    <option value="fr">Français</option>
+                                                    <option value="it">Italiano</option>
+                                                    <option value="hu">Magyar</option>
+                                                    <option value="nl">Nederlands</option>
+                                                    <option value="no">Norsk</option>
+                                                    <option value="pl">Polski</option>
+                                                    <option value="pt">Português</option>
+                                                    <option value="fi">Suomi</option>
+                                                    <option value="sv">Svenska</option>
+                                                    <option value="tr">Türkçe</option>
+                                                    <option value="is">Íslenska</option>
+                                                    <option value="cs">Čeština</option>
+                                                    <option value="ru">Русский</option>
+                                                    <option value="th">ภาษาไทย</option>
+                                                    <option value="zh">中文 (简体)</option>
+                                                    <option value="zh-TW">中文 (繁體)</option>
+                                                    <option value="ja">日本語</option>
+                                                    <option value="ko">한국어</option>
+                                                </select>
+                                            </div> --}}
 
                                             <div class="form-group">
                                                 <div class="col-md-offset-3 col-md-10">
@@ -92,25 +131,25 @@
                                         </div>
                                     </div>
 
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title text-center">
-                                                    ชั่วโมงทำงาน </h3>
-                                            </div>
-                                            <div class="panel-body">
-                                                <!--main content-->
-                                                <div class="row">
-                                                    <div id="grdWorkTimes"></div>
-                                                    <input type="hidden" id="workTimesData" name="workTimesData" />
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title text-center">
+                                                        ชั่วโมงทำงาน </h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <!--main content-->
+                                                    <div class="row">
+                                                        <div id="grdWorkTimes"></div>
+                                                        <input type="hidden" id="workTimesData" name="workTimesData" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
                                     <div class="card">
                                         <div class="card-body">
@@ -121,23 +160,23 @@
                                                 </div>
                                                 <div class="panel-body">
 
-                                                <!--main content-->
-                                                <div class="row">
-                                                    <div id="grdHolidays"></div>
-                                                    <input type="hidden" id="holidaysData" name="holidaysData" />
+                                                    <!--main content-->
+                                                    <div class="row">
+                                                        <div id="grdHolidays"></div>
+                                                        <input type="hidden" id="holidaysData" name="holidaysData" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                </div><!-- end content-->
-            </div><!--  end card  -->
-        </div> <!-- end col-md-12 -->
-    </div> <!-- end row -->
-</div>
+                            </form>
+                        </div>
+                    </div><!-- end content-->
+                </div><!--  end card  -->
+            </div> <!-- end col-md-12 -->
+        </div> <!-- end row -->
+    </div>
 @endsection
 
 
@@ -170,13 +209,12 @@
                     clinic_id: "",
                     clinic_name: "",
                     clinic_description: "",
-                    clinic_logo: "../../assets_clinic_config/images/logo.png",
+                    clinic_logo: "",
                     clinic_phone: "",
                     clinic_address: "",
                     booking_time_slot: "",
                     clinic_map: "",
                     clinic_open_date: "",
-                    //file:''
                 },
                 holidays: {
                     holiday_id: "",
@@ -201,45 +239,61 @@
                 },
 
                 getClinic_Config() {
-                    //console.log("Clinic_Config Setting");
+                //console.log("Clinic_Config Setting");
                     axios.get('/ajax_getData').then(response => {
-                        // console.log(response.data);
+                        console.log(response.data);
                         this.clinic_config = response.data
                     });
                 },
                 clinic_submit(e) {
 
-                    // axios to route for save clinic config
-                    let formData = new FormData()
-                    let token = document.querySelector('input[name="_token"]').value
+                    Swal.fire({
+                        title: 'ยืนยันการบันทึก ?',
+                        // showDenyButton: true,
+                        position: 'top',
+                        showCancelButton: true,
+                        confirmButtonText: 'Save',
+                        // denyButtonText: `Don't save`,
+                    }).then((result) => {
+                        // axios to route for save clinic config
+                        if (result.isConfirmed) {
 
-                    formData.append('token', token)
+                            let formData = new FormData()
+                            let token = document.querySelector('input[name="_token"]').value
 
-                    formData.append('clinic_id', this.clinic_config.clinic_id)
-                    formData.append('clinic_name', this.clinic_config.clinic_name)
-                    formData.append('clinic_description', this.clinic_config.clinic_description)
-                    formData.append('clinic_logo', this.clinic_config.clinic_logo)
-                    formData.append('clinic_phone', this.clinic_config.clinic_phone)
-                    formData.append('clinic_address', this.clinic_config.clinic_address)
-                    formData.append('booking_time_slot', this.clinic_config.booking_time_slot)
-                    formData.append('clinic_map', this.clinic_config.clinic_map)
+                            formData.append('token', token)
 
-                    //formData.append('file', this.file)
+                            formData.append('clinic_id', this.clinic_config.clinic_id)
+                            formData.append('clinic_name', this.clinic_config.clinic_name)
+                            formData.append('clinic_description', this.clinic_config.clinic_description)
+                            formData.append('clinic_logo', this.clinic_config.clinic_logo)
+                            formData.append('clinic_phone', this.clinic_config.clinic_phone)
+                            formData.append('clinic_address', this.clinic_config.clinic_address)
+                            formData.append('booking_time_slot', this.clinic_config.booking_time_slot)
+                            formData.append('clinic_map', this.clinic_config.clinic_map)
 
-                    //console.log(formData)
-                    axios.post("/edit_clinic", formData)
-                        .then((res) => {
-                            if (res.data) {
-                                // console.log(res.data)
-                            }
-                        })
-                        .catch(error => console.log(error))
+                            //console.log(formData)
+                            axios.post("/edit_clinic", formData)
+                                .then((res) => {
+                                    if (res.data) {
+
+                                        console.log(res.data);
+
+                                        Swal.fire({
+                                            title: "บันทึกข้อมูลสำเร็จ",
+                                            icon: 'success',
+                                            position: 'top'
+                                        })
+                                    }
+                                })
+                                .catch(error => console.log(error))
+
+                        }
+                    })
                 }
             },
             mounted() {
                 this.getClinic_Config();
-                //this.getHoliday();
-                // this.getOpening_Hours();
             }
         })
     </script>
@@ -274,15 +328,15 @@
 
     <script>
         const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
         })
 
         $(function() {
@@ -493,62 +547,121 @@
                         ],
                         onItemUpdating: function(args) {
                             //ถ้าหาก start 1 >= end 1
-                            if(args.item.time_start_1 >= args.item.time_end_1){
+                            if (args.item.time_start_1 >= args.item.time_end_1) {
+                                let timerInterval
                                 return Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'warning',
-                                    title: 'กรุณากรอกเวลาเริ่ม 1 (start1) ให้น้อยกว่า เวลาสิ้นสุด 1 (end 1) ',
-                                    showConfirmButton: false,
-                                    timer: 3000,
-                                });
-                            }else if(args.item.time_end_1 > args.item.time_start_2){ //ถ้า end 1 < start 2
-                                return Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'warning',
-                                    title: 'กรุณากรอกเวลาสิ้นสุด 1  ให้น้อยกว่าหรือเท่ากับ เวลาเริ่ม 2 (start2) ',
-                                    showConfirmButton: false,
-                                    timer: 3000,
-                                });
-                            }else if(args.item.time_start_2 >= args.item.time_end_2){
-                                return Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'warning',
-                                    title: 'กรุณากรอกเวลาเริ่ม 2 (start 2) ให้น้อยกว่า เวลาสิ้นสุด 2 (end 2) ',
-                                    showConfirmButton: false,
-                                    timer: 3000,
+                                    title: 'กรุณากรอกเวลาเริ่ม 1 (start1) ให้น้อยกว่า เวลาสิ้นสุด 1 (end 1)',
+                                    html: 'ปิดแจ้งเตือน อัตโนมัต ใน <b></b> milliseconds.',
+                                    timer: 5000,
+                                    timerProgressBar: true,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                        const b = Swal.getHtmlContainer().querySelector(
+                                            'b')
+                                        timerInterval = setInterval(() => {
+                                            b.textContent = Swal.getTimerLeft()
+                                        }, 100)
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                }).then((result) => {
+                                    /* Read more about handling dismissals below */
+                                    if (result.dismiss === Swal.DismissReason.timer) {
+                                        console.log('I was closed by the timer')
+                                    }
                                 });
 
-                            }else{
+                            } else if (args.item.time_start_2 == args.item.time_end_2) {
                                 axios.post("/update_workTimes", args.item)
-                                .then((res) => {
-                                    if (res.data) {
-                                    Swal.fire({
-                                        position: 'top-end',
-                                        icon: 'success',
-                                        title: 'Your work has been saved',
-                                        showConfirmButton: false,
-                                        timer: 1500,
+                                    .then((res) => {
+                                        if (res.data) {
+                                            Swal.fire({
+                                                position: 'top-end',
+                                                icon: 'success',
+                                                title: 'Your work has been saved',
+                                                showConfirmButton: false,
+                                                timer: 2000,
+                                            })
+                                        }
                                     })
-                                    }
-                                })
-                                .catch(error => console.log(error))
+                                    .catch(error => console.log(error))
+
+                            } else if (args.item.time_start_2) {
+                                //ถ้า start 2 < end 1
+                                if (args.item.time_start_2 < args.item.time_end_1) {
+                                    let timerInterval
+                                    return Swal.fire({
+                                        title: 'กรุณากรอกเวลาสิ้นสุด 1  ให้น้อยกว่าหรือเท่ากับ เวลาเริ่ม 2 (start2)',
+                                        html: 'ปิดแจ้งเตือน อัตโนมัต ใน <b></b> milliseconds.',
+                                        timer: 5000,
+                                        timerProgressBar: true,
+                                        didOpen: () => {
+                                            Swal.showLoading()
+                                            const b = Swal.getHtmlContainer()
+                                                .querySelector('b')
+                                            timerInterval = setInterval(() => {
+                                                b.textContent = Swal
+                                                    .getTimerLeft()
+                                            }, 100)
+                                        },
+                                        willClose: () => {
+                                            clearInterval(timerInterval)
+                                        }
+                                    }).then((result) => {
+                                        /* Read more about handling dismissals below */
+                                        if (result.dismiss === Swal.DismissReason.timer) {
+                                            console.log('I was closed by the timer')
+                                        }
+                                    });
+
+                                } else if (args.item.time_start_2 >= args.item.time_end_2) {
+                                    let timerInterval
+                                    return Swal.fire({
+                                        title: 'กรุณากรอกเวลาเริ่ม 2 (start 2) ให้น้อยกว่า เวลาสิ้นสุด 2 (end 2) ',
+                                        html: 'ปิดแจ้งเตือน อัตโนมัต ใน <b></b> milliseconds.',
+                                        timer: 5000,
+                                        timerProgressBar: true,
+                                        didOpen: () => {
+                                            Swal.showLoading()
+                                            const b = Swal.getHtmlContainer()
+                                                .querySelector('b')
+                                            timerInterval = setInterval(() => {
+                                                b.textContent = Swal
+                                                    .getTimerLeft()
+                                            }, 100)
+                                        },
+                                        willClose: () => {
+                                            clearInterval(timerInterval)
+                                        }
+                                    }).then((result) => {
+                                        /* Read more about handling dismissals below */
+                                        if (result.dismiss === Swal.DismissReason.timer) {
+                                            console.log('I was closed by the timer')
+                                        }
+                                    });
+                                }
+
+                            } else {
+                                axios.post("/update_workTimes", args.item)
+                                    .then((res) => {
+                                        if (res.data) {
+                                            Swal.fire({
+                                                position: 'top-end',
+                                                icon: 'success',
+                                                title: 'Your work has been saved',
+                                                showConfirmButton: false,
+                                                timer: 2000,
+                                            })
+                                        }
+                                    })
+                                    .catch(error => console.log(error))
                             }
-                            // console.log(args.item.time_start_1);
-                            // console.log(args.item.time_end_1);
-                            // console.log(args.item.time_start_2);
-                            // console.log(args.item.time_end_2);
-                            //return
-                                // cancel update of the item with empty 'name' field
-                            // if (args.item.name === "") {
-                            //     args.cancel = true;
-                            //     alert("Specify the name of the item!");
-                            // }
                         }
                     });
                 });
         });
     </script>
-
     <script>
         $(function() {
             $("#frmMain").on('submit', function() {
@@ -1018,33 +1131,30 @@
                                                         showCloseButton: true,
                                                         onClose: () => {
                                                             // เมื่อตกลง เรียกใช้ function setHolidayTable()
-                                                            setHolidayTable()
+                                                            setHolidayTable
+                                                                ()
                                                         }
-
                                                     })
-
                                                 }
                                             })
                                     }
-
                                 })
-
                             },
                             onItemInserting: function(args) {
                                 // cancel insertion of the item with empty 'name' field
                                 // console.log(args.item);
                                 axios.post("/insert_holidays", args.item)
-                                .then((res) => {
-                                    // console.log(res.data);
-                                    // เมื่อ insert สำเร็จ แสดง alert แจ้งว่า 'Successfully'
-                                    if (res.data == 'success') {
-                                        Swal.fire({
-                                            position: 'top-end',
-                                            icon: 'success',
-                                            title: 'Your work has been saved',
-                                            showConfirmButton: false,
-                                            timer: 1500,
-                                            didClose: () => {
+                                    .then((res) => {
+                                        // console.log(res.data);
+                                        // เมื่อ insert สำเร็จ แสดง alert แจ้งว่า 'Successfully'
+                                        if (res.data == 'success') {
+                                            Swal.fire({
+                                                position: 'top-end',
+                                                icon: 'success',
+                                                title: 'Your work has been saved',
+                                                showConfirmButton: false,
+                                                timer: 1500,
+                                                didClose: () => {
                                                     // เมื่อตกลง เรียกใช้ function setHolidayTable()
                                                     setHolidayTable()
                                                 }
@@ -1053,26 +1163,26 @@
                                     })
                             },
                             onItemUpdating: function(args) {
-                            // cancel update of the item with empty 'name' field
-                            // console.log(args.item);
-                            axios.post("/update_holiday", args.item)
-                                .then((res) => {
-                                    //console.log(res.data)
-                                    if (res.data) {
+                                // cancel update of the item with empty 'name' field
+                                // console.log(args.item);
+                                axios.post("/update_holiday", args.item)
+                                    .then((res) => {
+                                        //console.log(res.data)
+                                        if (res.data) {
 
-                                        Swal.fire({
-                                            position: 'top-end',
-                                            icon: 'success',
-                                            title: 'Your work has been saved',
-                                            showConfirmButton: false,
-                                            timer: 1500,
-                                            didClose: () => {
-                                                // เมื่อตกลง เรียกใช้ function setHolidayTable()
-                                                setHolidayTable()
-                                            }
-                                        })
-                                    }
-                                })
+                                            Swal.fire({
+                                                position: 'top-end',
+                                                icon: 'success',
+                                                title: 'Your work has been saved',
+                                                showConfirmButton: false,
+                                                timer: 1500,
+                                                didClose: () => {
+                                                    // เมื่อตกลง เรียกใช้ function setHolidayTable()
+                                                    setHolidayTable()
+                                                }
+                                            })
+                                        }
+                                    })
                             },
                         });
                     });
