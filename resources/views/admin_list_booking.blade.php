@@ -59,10 +59,10 @@
                     // "created_at" => "2022-09-20 16:03:37"
                     // "updated_at" => "2022-09-20 16:03:42"
                 @endphp
-                @foreach ($list_booking as $booking)
+                @foreach ($list_booking as $key => $booking)
 
                 <tr>
-                    <td>{{ $booking->id }}</td>
+                    <td>{{ $key + 1 }}</td>
                     <td>{{ $booking->reference }}</td>
                     <td>{{ $booking->services }}</td>
                     <td>{{ $booking->booking_date }}</td>

@@ -1187,10 +1187,7 @@
                         });
                     });
             }
-
             setHolidayTable()
-
-
         });
     </script>
 @endsection

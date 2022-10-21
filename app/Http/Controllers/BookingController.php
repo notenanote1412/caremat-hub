@@ -14,6 +14,8 @@ use App\Models\Clinic;
 use App\Models\Holiday;
 use App\Models\OpeningHours;
 
+use KS\Line\LineNotify;
+
 
 use Termwind\Components\Dd;
 
@@ -47,12 +49,12 @@ class BookingController extends Controller
 
         $services = [];
 
-        if($request->service_hiv) $services[] = $request->service_hiv;
-        if($request->service_prep) $services[] = $request->service_prep;
-        if($request->service_hormones) $services[] = $request->service_hormones;
-        if($request->service_hepB) $services[] = $request->service_hepB;
-        if($request->service_hepC) $services[] = $request->service_hepC;
-        if($request->service_consult) $services[] = $request->service_consult;
+        if ($request->service_hiv) $services[] = $request->service_hiv;
+        if ($request->service_prep) $services[] = $request->service_prep;
+        if ($request->service_hormones) $services[] = $request->service_hormones;
+        if ($request->service_hepB) $services[] = $request->service_hepB;
+        if ($request->service_hepC) $services[] = $request->service_hepC;
+        if ($request->service_consult) $services[] = $request->service_consult;
 
         $service = json_encode($services);
         //return $service;
@@ -97,10 +99,11 @@ class BookingController extends Controller
         $title = "เชียงใหม่";
 
 
-        return view('form_input', compact("title"),$request->all());
+        return view('form_input', compact("title"), $request->all());
     }
 
-    public function info_input(Request $request){
+    public function info_input(Request $request)
+    {
 
         $title = "เชียงใหม่";
 
@@ -109,17 +112,44 @@ class BookingController extends Controller
         $phone = $request['phone'];
         $email = $request['email'];
 
-        $list_services = [];
-
-        if($reference){
+        if ($reference) {
             $booking = Booking::where('reference', '=', $reference)->latest()->first();
 
             Booking::where('reference', $reference)
-            ->update([
-                'name' => $name,
-                'phone' => $phone,
-                'email' => $email
-            ]);
+                ->update([
+                    'status' => "จองเข้าระบบ",
+                    'name' => $name,
+                    'phone' => $phone,
+                    'email' => $email
+                ]);
+
+            // notify staff via LineNotify
+            $token = 'OiUHZCbdJ956HbhxlGvFAqyjfijBIsM536Wc4Fy9pSb';
+
+            $ln = new LineNotify($token);
+
+            $date_now = date("Y-m-d H:i:s");
+
+            $booking_hour = explode(":", $booking->booking_time_start)[0];
+            $booking_minute = explode(":", $booking->booking_time_start)[1];
+
+            $booking_time_end = Carbon::createFromTime((int)$booking_hour, (int)$booking_minute)->addMinutes((int)$booking->booking_slot)->format('H:i');
+
+            $booking_name = $name;
+            $booking_phone = $phone;
+            $booking_services = implode(", ", json_decode($booking->services));
+            $booking_date = $booking->booking_date;
+            $booking_time = $booking->booking_time_start . " - " . $booking_time_end;
+
+            $text = "เวลา {$date_now}
+                มีการจองขอคำปรึกษาออนไลน์ ผ่านระบบ CAREMAT Hub
+                ชื่อ: {$booking_name}
+                เบอร์โทร: {$booking_phone}
+                บริการ: {$booking_services}
+                วันที่่จอง: {$booking_date}
+                เวลาจอง: {$booking_time}
+                ";
+            $ln->send($text);
 
             return $reference;
         }
@@ -138,49 +168,51 @@ class BookingController extends Controller
 
 
 
-            //$list_booking = $booking->implode(", ", json_decode($booking->services));
+        //$list_booking = $booking->implode(", ", json_decode($booking->services));
 
-            //dd($list_booking);
+        //dd($list_booking);
 
 
-        return view('show_services', compact("title","list_booking","list_services"));
+        return view('show_services', compact("title", "list_booking", "list_services"));
     }
 
-    public function adminsignin (){
+    public function adminsignin()
+    {
 
         return view('admin_signin');
     }
 
-    public function adminpage(Request $request){
+    public function adminpage(Request $request)
+    {
 
         $this->middleware('auth');
 
-        //$booking = new Booking;
-        $list_booking = Booking::all();
+        $booking_data = Booking::all();
 
-        $booking = Booking::all();
+        foreach ($booking_data as $key => $booking) {
+            $booking_data[$key]->services = implode(", ", json_decode($booking->services));
+        }
 
-            foreach ($list_booking as $key => $booking)
-            {
-                $list_booking[$key]->services = implode(", ", json_decode($booking->services));
-            }
+        $list_booking = $booking_data->filter(function ($item) {
+            return $item->phone;
+        })->values();
 
-
-
-        return view('admin_list_booking',compact("list_booking"));
+        return view('admin_list_booking', compact("list_booking"));
     }
 
-    public function clinic_config(){
+    public function clinic_config()
+    {
 
         // $this->middleware('auth');
 
         $clinic = Clinic::all();
         //dd($clinic);
 
-        return view('clinic_configx',compact("clinic"));
+        return view('clinic_configx', compact("clinic"));
     }
 
-    public function getClinic_config(){
+    public function getClinic_config()
+    {
 
         // $this->middleware('auth');
 
@@ -201,15 +233,15 @@ class BookingController extends Controller
         return $response;
     }
 
-    public function getHoliday(){
+    public function getHoliday()
+    {
 
         // $this->middleware('auth');
 
         $holiday = Holiday::all();
 
         $response = [];
-        foreach ($holiday as $key => $item)
-        {
+        foreach ($holiday as $key => $item) {
             $obj = [];
 
             $obj['id']              = $item->id;
@@ -219,12 +251,12 @@ class BookingController extends Controller
             $obj['is_recurring']    = $item->is_recurring;
 
             $response[] = (object) $obj;
-
         }
         return $response;
     }
 
-    public function delete_holidays(Request $request){
+    public function delete_holidays(Request $request)
+    {
 
         // $this->middleware('auth');
 
@@ -232,9 +264,9 @@ class BookingController extends Controller
         $deleted->delete();
 
         return 'deleted';
-
     }
-    public function insert_holidays(Request $request){
+    public function insert_holidays(Request $request)
+    {
 
         // $this->middleware('auth');
 
@@ -251,55 +283,54 @@ class BookingController extends Controller
         $holiday->save();
 
         return 'success';
-
     }
 
-    public function update_holiday(Request $request){
+    public function update_holiday(Request $request)
+    {
 
         // เช็ค request ว่ามาจริงมั้ย
         //return $request;
         // อัพเดทค่าจาก request เข้าฐานข้อมูล ตาม id
         // return $request['id'];
 
-        $id = $request['id'] ;
-        $clinic_id = $request['clinic_id'] ;
+        $id = $request['id'];
+        $clinic_id = $request['clinic_id'];
         $holiday_title =  $request['holiday_name'];
         $holiday_date =  $request['holiday_date'];
         $is_recurring =  $request['is_recurring'];
 
 
 
-        if($id){
+        if ($id) {
             //$clinic_id = $clinic_id ?? "";
             $holiday_title = $holiday_title ?? "";
             $holiday_date = $holiday_date ?? "";
             $is_recurring = $is_recurring ?? "";
 
             Holiday::where('id', $id)
-            ->update([
-                'clinic_id' => $clinic_id,
-                'holiday_title' => $holiday_title,
-                'holiday_date' => $holiday_date,
-                'is_recurring' => $is_recurring,
-            ]);
+                ->update([
+                    'clinic_id' => $clinic_id,
+                    'holiday_title' => $holiday_title,
+                    'holiday_date' => $holiday_date,
+                    'is_recurring' => $is_recurring,
+                ]);
 
             $holiday = Holiday::where('id', '=', $id)->latest()->first()->get();
-
         }
         return  $holiday;
     }
 
 
-    public function getOpening_Hours(){
+    public function getOpening_Hours()
+    {
 
         // $this->middleware('auth');
 
         $openingHours = OpeningHours::all();
 
-      $response = [];
+        $response = [];
 
-        foreach ($openingHours as $key => $item)
-        {
+        foreach ($openingHours as $key => $item) {
             $obj = [];
 
             $obj['id']              = $item->id;
@@ -311,27 +342,27 @@ class BookingController extends Controller
             $obj['time_end_2']      = $item->time_End_2;
 
             $response[] = (object) $obj;
-
         }
 
         return $response;
     }
 
-    public function update_workTimes(Request $request){
+    public function update_workTimes(Request $request)
+    {
 
         // เช็ค request ว่ามาจริงมั้ย
         // อัพเดทค่าจาก request เข้าฐานข้อมูล ตาม id
         // return $request['id'];
 
-        $id = $request['id'] ;
-        $clinic_id = $request['clinic_id'] ;
-        $days = $request['day_num'] ;
+        $id = $request['id'];
+        $clinic_id = $request['clinic_id'];
+        $days = $request['day_num'];
         $time_Start_1 = $request['time_start_1'];
-        $time_End_1 = $request['time_end_1'] ;
+        $time_End_1 = $request['time_end_1'];
         $time_Start_2 = $request['time_start_2'];
-        $time_End_2 = $request['time_end_2'] ;
+        $time_End_2 = $request['time_end_2'];
 
-        if($clinic_id){
+        if ($clinic_id) {
 
             $day_lists = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
 
@@ -341,12 +372,12 @@ class BookingController extends Controller
             $time_End_2 = $time_End_2 ?? "";
 
             OpeningHours::where('id', $id)
-            ->update([
-                'time_Start_1' => $time_Start_1,
-                'time_End_1' => $time_End_1,
-                'time_Start_2' => $time_Start_2,
-                'time_End_2' => $time_End_2
-            ]);
+                ->update([
+                    'time_Start_1' => $time_Start_1,
+                    'time_End_1' => $time_End_1,
+                    'time_Start_2' => $time_Start_2,
+                    'time_End_2' => $time_End_2
+                ]);
 
             $opening_hours = OpeningHours::where('id', '=', $id)->latest()->first()->get();
 
@@ -354,14 +385,16 @@ class BookingController extends Controller
         }
     }
 
-    public function clinic_config_temp(){
+    public function clinic_config_temp()
+    {
 
         // $this->middleware('auth');
 
         return view('clinic_config');
     }
 
-    public function edit_clinic(Request $request){
+    public function edit_clinic(Request $request)
+    {
 
         $update_array = [
             'clinic_name' => $request->get('clinic_name'),
@@ -372,7 +405,7 @@ class BookingController extends Controller
             'clinic_map' => $request->get('clinic_map'),
         ];
 
-        if(isset($_FILES['clinic_logo'])){
+        if (isset($_FILES['clinic_logo'])) {
 
             $ext_allow = ['png', 'jpg', 'jpeg'];
 
@@ -384,81 +417,78 @@ class BookingController extends Controller
 
             $file_path = "./upload_image/clinic_logo_{$date_stamp}.png";
 
-            if(in_array($ext, $ext_allow)) {
+            if (in_array($ext, $ext_allow)) {
 
                 move_uploaded_file($_FILES['clinic_logo']['tmp_name'], $file_path);
-
             }
 
             $update_array['clinic_logo'] = $file_path;
-
         }
 
         return Clinic::where('id', $request->get('clinic_id'))->update($update_array);
     }
 
-    public function fetchWorkTimes(){
+    public function fetchWorkTimes()
+    {
 
 
-            $holiday = Holiday::all();
+        $holiday = Holiday::all();
 
-            $clinic_holiday = [];
+        $clinic_holiday = [];
 
-            foreach($holiday as $item) {
+        foreach ($holiday as $item) {
 
-                if($item->is_recurring) {
-                    $holiday_arr = explode("-", $item->holiday_date);
-                    $clinic_holiday[] = date("Y") . "-".$holiday_arr[1]."-" . $holiday_arr[2];
+            if ($item->is_recurring) {
+                $holiday_arr = explode("-", $item->holiday_date);
+                $clinic_holiday[] = date("Y") . "-" . $holiday_arr[1] . "-" . $holiday_arr[2];
 
-                    continue;
-                }
-
-                $clinic_holiday[] = $item->holiday_date;
-
+                continue;
             }
 
-            $workday = OpeningHours::all();
+            $clinic_holiday[] = $item->holiday_date;
+        }
 
-            $clinic_work_time = [];
+        $workday = OpeningHours::all();
 
-            foreach($workday as $item) {
+        $clinic_work_time = [];
 
-                    $clinic_work_time[$item->day_eng] = [
+        foreach ($workday as $item) {
 
-                        "booking_start1"  => $booking_start1 = $item->time_Start_1,
-                        "booking_end1"    => $booking_end1   = $item->time_End_1 ,
-                        "booking_start2"  => $booking_start2 = $item->time_Start_2,
-                        "booking_end2"    => $booking_end2   = $item->time_End_2,
+            $clinic_work_time[$item->day_eng] = [
 
-                    ];
-            }
+                "booking_start1"  => $booking_start1 = $item->time_Start_1,
+                "booking_end1"    => $booking_end1   = $item->time_End_1,
+                "booking_start2"  => $booking_start2 = $item->time_Start_2,
+                "booking_end2"    => $booking_end2   = $item->time_End_2,
 
-            $clinics = Clinic::latest()->first();
-            $clinic_email = "clinic@gmail.com";
-            $response = [
-                "clinic_name" => $clinics->id,
-                "clinic_title" => $clinics->clinic_name,
-                "clinic_address" => $clinics->clinic_description,
-                "clinic_phone" => $clinics->clinic_phone,
-                "clinic_email" => $clinic_email,
-                "clinic_booking_slot" => $clinics->booking_time_slot,
-                "clinic_holiday" => $clinic_holiday,
-                "clinic_work_time" => $clinic_work_time,
             ];
+        }
 
-            $bookings = Booking::where('booking_date', ">=", date("Y-m-d"))->get();
+        $clinics = Clinic::latest()->first();
+        $clinic_email = "clinic@gmail.com";
+        $response = [
+            "clinic_name" => $clinics->id,
+            "clinic_title" => $clinics->clinic_name,
+            "clinic_address" => $clinics->clinic_description,
+            "clinic_phone" => $clinics->clinic_phone,
+            "clinic_email" => $clinic_email,
+            "clinic_booking_slot" => $clinics->booking_time_slot,
+            "clinic_holiday" => $clinic_holiday,
+            "clinic_work_time" => $clinic_work_time,
+        ];
 
-            $used_slot = [];
+        $bookings = Booking::where('booking_date', ">=", date("Y-m-d"))->get();
 
-            foreach($bookings as $item) {
-                $used_slot[] = "{$item->booking_date} {$item->booking_time_start}";
-            }
+        $used_slot = [];
+
+        foreach ($bookings as $item) {
+            $used_slot[] = "{$item->booking_date} {$item->booking_time_start}";
+        }
 
 
-            $response['used_slot'] = $used_slot;
+        $response['used_slot'] = $used_slot;
 
         return $response;
-
     }
 
     /**
