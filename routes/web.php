@@ -30,7 +30,7 @@ Route::get('/admin' , [BookingController::class, 'adminpage'])->name('home');
 
 //Route Clinic Config
 Route::get('/clinic_config' , [BookingController::class, 'clinic_config']);
-Route::get('/clinic_config_temp' , [BookingController::class, 'clinic_config_temp']);
+// Route::get('/clinic_config_temp' , [BookingController::class, 'clinic_config_temp']);
 Route::get('/ajax_getData' , [BookingController::class, 'getClinic_config']);
 Route::post('/edit_clinic', [BookingController::class, 'edit_clinic']);
 

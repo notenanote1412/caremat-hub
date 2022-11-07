@@ -93,12 +93,6 @@
               <p>Clinic Config</p>
             </a>
           </li>
-          <li>
-            <a href="./clinic_config_temp">
-              <i class="nc-icon nc-settings"></i>
-              <p>Clinic Config Temp</p>
-            </a>
-          </li>
         </ul>
       </div>
     </div>

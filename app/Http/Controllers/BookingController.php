@@ -142,13 +142,13 @@ class BookingController extends Controller
             $booking_time = $booking->booking_time_start . " - " . $booking_time_end;
 
             $text = "เวลา {$date_now}
-                มีการจองขอคำปรึกษาออนไลน์ ผ่านระบบ CAREMAT Hub
-                ชื่อ: {$booking_name}
-                เบอร์โทร: {$booking_phone}
-                บริการ: {$booking_services}
-                วันที่่จอง: {$booking_date}
-                เวลาจอง: {$booking_time}
-                ";
+มีการจองขอคำปรึกษาออนไลน์ ผ่านระบบ CAREMAT Hub
+ชื่อ: {$booking_name}
+เบอร์โทร: {$booking_phone}
+บริการ: {$booking_services}
+วันที่่จอง: {$booking_date}
+เวลาจอง: {$booking_time}
+";
             $ln->send($text);
 
             return $reference;
